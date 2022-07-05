@@ -36,9 +36,9 @@ LIB_PATH = 	libft/
 
 MINILIBX_PATH = mlx_linux/
 
-MINILIBX_RULE = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz 
+MINILIBX_RULE = -Lmlx_linux -lmlx -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz 
 
-CC = 		clang
+CC = 		gcc
 
 CFLAGS =	-Wall -Wextra -Werror -g
 
