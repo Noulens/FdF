@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/06 18:00:25 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/06 19:16:49 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ typedef struct s_data
 	int		endian;
 }	t_img;
 
+typedef struct s_win
+{
+	void	*mlx;
+	void	*win;
+}	t_win;
+
 /* This is a minimal set of ANSI/VT100 color codes */
 # define END "\033[0m"
 # define GREY "\033[0;30m"
@@ -44,6 +50,7 @@ typedef struct s_data
 /* Useful protos */
 void	ft_my_mpp(t_img *img, int x, int y, int color);
 int		ft_trgb(int t, int r, int g, int b);
+int		ft_close(int key, void *mlx, void *mlx_win);
 
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0

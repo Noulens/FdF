@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/06 18:05:21 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/06 19:42:55 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,11 @@ void	ft_my_mpp(t_img *img, int x, int y, int color)
 int	ft_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int		ft_close(int keycode, void *mlx, void *mlx_win)
+{
+	ft_printf("%x", keycode);
+		mlx_destroy_window(mlx, mlx_win);
+	return (0);
 }

@@ -46,10 +46,10 @@ CFLAGS =	-Wall -Wextra -Werror -g
 all: subsystem $(NAME) # Make all
 
 subsystem: # Make the libft first then the minilibx
-	@echo "$(_BOLD)$(_IYELLOW)$(_PURPLE)🔎 Verifying libft status...$(_END)"
+	@echo "$(_BOLD)$(_IYELLOW)$(_PURPLE)Verifying libft status...$(_END)"
 	make -C $(LIB_PATH) all
 	@echo "$(_BOLD)$(_PURPLE)libft archive generated, nothing else to be done here 😎$(_END)"
-	@echo "$(_BOLD)$(_IYELLOW)$(_PURPLE)🔎 Verifying minilibx status...$(_END)"
+	@echo "$(_BOLD)$(_IYELLOW)$(_PURPLE)Verifying minilibx status...$(_END)"
 	make -C $(MINILIBX_PATH) all
 	@echo "$(_BOLD)$(_PURPLE)minilibx archive generated, nothing else to be done here 😎$(_END)"
 
@@ -62,12 +62,12 @@ clean: # Clean generated object files
 	make -C $(LIB_PATH) clean
 	make -C $(MINILIBX_PATH) clean
 	rm -f $(OBJECTS)
-	@echo "$(_BOLD)$(_YELLOW)All object files removed !!! 🧹$(_END)"
+	@echo "$(_BOLD)$(_YELLOW)All object files removed$(_END)"
 
 fclean: clean # Clean generated object files and and targets
 	make -C $(LIB_PATH) fclean
 	rm -f $(NAME)
-	@echo "$(_BOLD)$(_YELLOW)All generated files removed !!! 🧹 🌪️$(_END)"
+	@echo "$(_BOLD)$(_YELLOW)All generated files removed$(_END)"
 
 re: fclean all
 
