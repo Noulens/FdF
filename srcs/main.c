@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/06 19:21:51 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/06 19:56:59 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	main(void)
 		x = x + 1;
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_hook(mlx_win, 2, 1L<<0, ft_close, &mlx_win);
+	mlx_hook(mlx_win, 2, 1L << 0, ft_close, &mlx_win);
 	mlx_loop(mlx);
 }
