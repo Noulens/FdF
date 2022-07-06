@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/06 17:08:05 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/06 17:58:17 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	main(void)
 		y = 1080 / 2 - 125;
 		while (y < 1080 / 2 + 125)
 		{
-			ft_my_mpp(&img, x, y, 0x00FF0000);
-			y = y + 2;
+			ft_my_mpp(&img, x, y, 0x00823C46);
+			y = y + 1;
 		}
-		x = x + 2;
+		x = x + 1;
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/06 13:00:51 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:00:25 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data
 
 /* Useful protos */
 void	ft_my_mpp(t_img *img, int x, int y, int color);
+int		ft_trgb(int t, int r, int g, int b);
 
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
