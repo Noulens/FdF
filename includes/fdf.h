@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/06 19:16:49 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/06 23:47:54 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct s_win
 # define GREEN "\033[0;32m"
 # define YELLOW "\033[0;33m"
 # define BLUE "\033[0;34m"
+
+/* Key codes */
+# define ESC 65307
 
 /* Useful protos */
 void	ft_my_mpp(t_img *img, int x, int y, int color);
