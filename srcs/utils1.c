@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/06 19:57:34 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/06 23:46:56 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_trgb(int t, int r, int g, int b)
 
 int	ft_close(int keycode, void *mlx, void *mlx_win)
 {
-	ft_printf("%x", keycode);
-	mlx_destroy_window(mlx, mlx_win);
+	if (keycode == 65307)
+		mlx_destroy_window(mlx, mlx_win);
 	return (0);
 }
