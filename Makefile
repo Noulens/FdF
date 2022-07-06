@@ -28,7 +28,8 @@ DONE	=  	@echo "$(_BOLD)$(_GREEN)Compilation done !!! 👌$(_END)"
 
 NAME	=	fdf
 
-CFILES	=	./srcs/test.c
+CFILES	=	./srcs/main.c\
+			./srcs/utils1.c
 
 OBJECTS = 	$(CFILES:.c=.o)
 
@@ -38,7 +39,7 @@ MINILIBX_PATH = mlx_linux/
 
 MINILIBX_RULE = -Lmlx_linux -lmlx -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz 
 
-CC = 		gcc
+CC = 		cc
 
 CFLAGS =	-Wall -Wextra -Werror -g
 
@@ -71,7 +72,7 @@ fclean: clean # Clean generated object files and and targets
 re: fclean all
 
 call: all clean # Clean generated object files then clean libft target and object files
-	make -C $(MINILIBX_PATH) clean
+	make -C $(MINILIBX_PATH) fclean
 	make -C $(LIB_PATH) fclean
 	@echo "$(_BOLD)$(_GREEN)Compilation done, object files and archive removed 👌$(_END)"
 

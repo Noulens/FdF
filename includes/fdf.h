@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/04 16:32:18 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/06 13:00:51 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <math.h>
+# include <errno.h>
+# include <string.h>
+
+/* structures */
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}	t_img;
 
 /* This is a minimal set of ANSI/VT100 color codes */
 # define END "\033[0m"
@@ -29,6 +42,7 @@
 # define BLUE "\033[0;34m"
 
 /* Useful protos */
+void	ft_my_mpp(t_img *img, int x, int y, int color);
 
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
