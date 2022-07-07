@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/07 18:19:52 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/07/07 18:20:11 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/07/07 18:30:37 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	ft_my_mpp(t_img *img, int x, int y, int color)
+int	ft_get_matrix_int(t_map *map, int i, int j)
 {
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
-	*(unsigned int *)dst = color;
+	return (map->matrix[0][i + i * (map->width - 1) + j]);
 }
 
-int	ft_trgb(int t, int r, int g, int b)
+void	ft_set_matrix_int(t_map *map, int i, int j, int val)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	map->matrix[0][i + i * (map->width - 1) + j] = val;
 }
 
-int	ft_close(int keycode, void *mlx, void *mlx_win)
+int	ft_get_matrix_color(t_map *map, int i, int j)
 {
-	if (keycode == ESC)
-		mlx_destroy_window(mlx, mlx_win);
-	return (0);
+	return (map->matrix[1][i + i * (map->width - 1) + j]);
+}
+
+void	ft_set_matrix_color(t_map *map, int i, int j, int val)
+{
+	map->matrix[1][i + i * (map->width - 1) + j] = val;
 }

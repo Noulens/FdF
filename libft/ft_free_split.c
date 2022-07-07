@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/07 18:19:52 by tnoulens         ###   ########.fr       */
+/*   Created: 2022/07/07 15:45:42 by tnoulens          #+#    #+#             */
+/*   Updated: 2022/07/07 15:46:47 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "libft.h"
 
-void	ft_my_mpp(t_img *img, int x, int y, int color)
+void	ft_free_split(char **tofree)
 {
-	char	*dst;
+	int	k;
 
-	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	ft_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int	ft_close(int keycode, void *mlx, void *mlx_win)
-{
-	if (keycode == ESC)
-		mlx_destroy_window(mlx, mlx_win);
-	return (0);
+	k = 0;
+	while (tofree[k])
+		free(tofree[k++]);
+	free(tofree);
 }

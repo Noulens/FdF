@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:05:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/05 13:15:09 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/07 15:46:42 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void	ft_cpy(char *suf, char *p);
 long	ft_atol(const char *nptr);
 t_int	*ft_lstnewint(int content);
 int		ft_lstsizem(t_int *lst, int n);
+void	ft_free_split(char **tofree);
 
 #endif

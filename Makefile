@@ -29,6 +29,8 @@ DONE	=  	@echo "$(_BOLD)$(_GREEN)Compilation done !!! 👌$(_END)"
 NAME	=	fdf
 
 CFILES	=	./srcs/main.c\
+			./srcs/parsing.c\
+			./srcs/matrix.c\
 			./srcs/utils1.c
 
 OBJECTS = 	$(CFILES:.c=.o)
