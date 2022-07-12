@@ -3,25 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:24:19 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/07 18:29:30 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/12 09:23:19 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static int	ft_splitlen(char **p)
+static int	ft_count_word(const char *str, char c)
 {
-	int	i;
+	int		word_flag;
+	int		i;
+	int		word_count;
 
 	i = 0;
-	if (!p || !*p)
-		return (0);
-	while (p[i] && p[i][0] != '\n')
-		++i;
-	return (i);
+	word_flag = 0;
+	word_count = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+		{
+			word_flag = 0;
+			++i;
+		}
+		else if (word_flag == 1)
+			++i;
+		else
+		{
+			word_flag = 1;
+			++word_count;
+			++i;
+		}
+	}
+	return (word_count);
 }
 
 int	ft_check_map(char *path, t_map *map)
@@ -29,7 +45,6 @@ int	ft_check_map(char *path, t_map *map)
 	int		fd;
 	int		tmp;
 	char	*ptr;
-	char	**p;
 
 	fd = open(path, O_RDONLY);
 	ptr = get_next_line(fd);
@@ -37,13 +52,11 @@ int	ft_check_map(char *path, t_map *map)
 	{
 		tmp = map->width;
 		map->length++;
-		p = ft_split(ptr, ' ');
-		map->width = ft_splitlen(p);
+		map->width = ft_count_word(ptr, ' ');
 		if ((tmp != 0 && tmp != map->width) || map->width == 0)
-			return (ft_free_split(p), free(ptr), 0);
+			return (free(ptr), 0);
 		free(ptr);
 		ptr = get_next_line(fd);
-		ft_free_split(p);
 	}
 	close(fd);
 	if (map->length != map->width)
@@ -51,18 +64,74 @@ int	ft_check_map(char *path, t_map *map)
 	return (1);
 }
 
-t_map	*ft_build_mtx(t_map *map)
+void	ft_build_map(t_map *map, char *path)
+{
+	char	*p;
+	char	**ptr;
+	int		fd;
+	int		i;
+	int		j;
+	
+	fd = open(path, O_RDONLY);
+	p = get_next_line(fd);
+	i = 0;
+	while (p)
+	{
+		ptr = ft_split(p, ' ');
+		j = 0;
+		while (ptr[j])
+		{
+			map->matrix[0][i] = ft_atoi(ptr[j]);
+			++j;
+			++i;
+		}
+		ft_free_split(ptr);
+		free (p);
+		p = get_next_line(fd);
+	}
+	close(fd);
+}
+
+void	ft_build_color(t_map *map, char *path)
+{
+	char	*p;
+	char	**ptr;
+	int		fd;
+	int		i;
+	int		j;
+	
+	fd = open(path, O_RDONLY);
+	p = get_next_line(fd);
+	i = 0;
+	while (p)
+	{
+		ptr = ft_split(p, ' ');
+		j = 0;
+		while (ptr[j])
+		{
+			map->matrix[1][i] = ft_atoi_base(ft_strchr(ptr[j], ','), 16);
+			++j;
+			++i;
+		}
+		ft_free_split(ptr);
+		free (p);
+		p = get_next_line(fd);
+	}
+	close(fd);
+}
+
+void	ft_build_mtx(t_map *map, char *path)
 {
 	map->matrix = (int **)malloc(2 * sizeof(int *));
 	if (!map->matrix)
-		return (NULL);
+		ft_printf("malloc error: ft_build_mtx");
 	map->matrix[0] = (int *)ft_calloc(map->length * map->width, sizeof(int));
 	map->matrix[1] = (int *)ft_calloc(map->length * map->width, sizeof(int));
 	if (!map->matrix[0] || !map->matrix[1])
-		return (free(map->matrix), NULL);
-}
-
-void	ft_build_map(t_map *map, char *path)
-{
-	;
+	{
+		free(map->matrix);
+		ft_printf("malloc error: ft_build_mtx");
+	}
+	ft_build_map(map, path);
+	ft_build_color(map, path);
 }

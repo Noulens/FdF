@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/07 18:28:37 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/11 22:45:54 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,11 @@ void	ft_my_mpp(t_img *img, int x, int y, int color);
 int		ft_trgb(int t, int r, int g, int b);
 int		ft_close(int key, void *mlx, void *mlx_win);
 	/* --- map --- */
-t_map	*ft_build_mtx(t_map *map);
+void	ft_build_mtx(t_map *map, char *path);
 void	ft_build_map(t_map *map, char *path);
 int		ft_check_map(char *path, t_map *map);
+void	ft_build_color(t_map *map, char *path);
+void	ft_free_map(t_map **map);
 	/* --- matrix --- */
 int		ft_get_matrix_int(t_map *map, int i, int j);
 void	ft_set_matrix_int(t_map *map, int i, int j, int val);

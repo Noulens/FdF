@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/07 18:19:52 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/11 22:41:24 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,12 @@ int	ft_close(int keycode, void *mlx, void *mlx_win)
 	if (keycode == ESC)
 		mlx_destroy_window(mlx, mlx_win);
 	return (0);
+}
+
+void	ft_free_map(t_map **map)
+{
+	free((*map)->matrix[0]);
+	free((*map)->matrix[1]);
+	free((*map)->matrix);
+	free((*map));
 }

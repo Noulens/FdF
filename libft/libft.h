@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:05:08 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/07 15:46:42 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/08 09:13:25 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define LIBFT_H
 
 # define DECIMAL "0123456789"
+# define HEX "0123456789abcdef"
+# define BINARY "01"
+# define OCT "012345678"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -97,6 +100,7 @@ void	*ft_callocb(size_t nmemb, size_t size);
 void	ft_cpy(char *suf, char *p);
 /* Other */
 long	ft_atol(const char *nptr);
+int		ft_atoi_base(const char *str, int base);
 t_int	*ft_lstnewint(int content);
 int		ft_lstsizem(t_int *lst, int n);
 void	ft_free_split(char **tofree);
