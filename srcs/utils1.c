@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/18 16:00:28 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/18 19:28:34 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	ft_close(int keycode, t_map *data)
 {
 	if (keycode == ESC)
 		mlx_destroy_window(data->mlx, data->win);
-	exit(EXIT_SUCCESS);
 	return (0);
 }
 
@@ -44,5 +43,7 @@ void	ft_free_map(t_map **map)
 	free((*map)->matrix[0]);
 	free((*map)->matrix[1]);
 	free((*map)->matrix);
+	free((*map)->mlx);
+	free((*map)->win);
 	free((*map));
 }

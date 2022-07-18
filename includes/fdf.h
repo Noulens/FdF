@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/18 16:23:05 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/18 19:32:53 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ typedef struct s_map
 
 typedef struct s_point
 {
-	float	x1;
-	float	y1;
-	float	x2;
-	float	y2;
-	int		color;
+	int	x1;
+	int	y1;
+	int	x2;
+	int	y2;
+	int	color;
 }	t_point;
 
 /* This is a minimal set of ANSI/VT100 color codes */
@@ -93,7 +93,8 @@ void	ft_build_map(t_map *map, char *path);
 int		ft_check_map(char *path, t_map *map);
 void	ft_build_color(t_map *map, char *path);
 void	ft_free_map(t_map **map);
-void	ft_bresenham(t_point points, t_img *img, t_map *data);
+void	ft_bresenham(t_point *points, t_img *img, t_map *data);
+void	ft_draw(t_point *points, t_img *img, t_map *data);
 	/* --- matrix --- */
 int		ft_get_matrix_int(t_map *map, int i, int j);
 void	ft_set_matrix_int(t_map *map, int i, int j, int val);
