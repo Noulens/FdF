@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/18 14:11:44 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:33:31 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 			&img.endian);
 	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
 	mlx_hook(img.win, 2, 1L << 0, ft_close, &img.win);
+	mlx_hook(img.win, 17, 1L << 17, ft_closebutton, &img.win);
 	mlx_loop(img.mlx);
 	ft_free_map(&mapptr);
 	return (0);
