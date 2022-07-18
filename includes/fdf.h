@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/18 14:30:54 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:23:05 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,24 @@ typedef struct s_data
 	int		bpp;
 	int		line_length;
 	int		endian;
-	void	*mlx;
-	void	*win;
 }	t_img;
 
 typedef struct s_map
 {
-	int	**matrix;
-	int	width;
-	int	length;
+	int		**matrix;
+	int		width;
+	int		length;
+	void	*mlx;
+	void	*win;
 }	t_map;
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
-	int	color;
+	float	x1;
+	float	y1;
+	float	x2;
+	float	y2;
+	int		color;
 }	t_point;
 
 /* This is a minimal set of ANSI/VT100 color codes */
@@ -81,14 +82,18 @@ typedef struct s_point
 	/* --- graph --- */
 void	ft_my_mpp(t_img *img, int x, int y, int color);
 int		ft_trgb(int t, int r, int g, int b);
-int		ft_close(int key, t_img *img);
+int		ft_close(int key, t_map *data);
 int		ft_closebutton(void *param);
+
+	/* --- Key events --- */
+void	ft_keyhook(int keycode, t_map *data);
 	/* --- map --- */
 void	ft_build_mtx(t_map *map, char *path);
 void	ft_build_map(t_map *map, char *path);
 int		ft_check_map(char *path, t_map *map);
 void	ft_build_color(t_map *map, char *path);
 void	ft_free_map(t_map **map);
+void	ft_bresenham(t_point points, t_img *img, t_map *data);
 	/* --- matrix --- */
 int		ft_get_matrix_int(t_map *map, int i, int j);
 void	ft_set_matrix_int(t_map *map, int i, int j, int val);

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/18 14:32:45 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:00:28 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	ft_closebutton(void *param)
 	exit(EXIT_SUCCESS);
 }
 
-int	ft_close(int keycode, t_img *img)
+int	ft_close(int keycode, t_map *data)
 {
 	if (keycode == ESC)
-		mlx_destroy_window(img->mlx, img->win);
+		mlx_destroy_window(data->mlx, data->win);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
