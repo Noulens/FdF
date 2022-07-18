@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/11 22:41:24 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/18 14:11:54 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	ft_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int	ft_close(int keycode, void *mlx, void *mlx_win)
+int	ft_close(int keycode, t_img *img)
 {
 	if (keycode == ESC)
-		mlx_destroy_window(mlx, mlx_win);
+		mlx_destroy_window(img->mlx, img->win);
 	return (0);
 }
 

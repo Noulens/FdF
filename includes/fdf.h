@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/18 13:06:14 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:12:18 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,19 @@ typedef struct s_point
 # define BLUE "\033[0;34m"
 
 /* Key codes */
-# define ESC 53
-# define A 0
-# define S 1
-# define D 2
-# define W 13
-# define UP 126
-# define DOWN 125
-# define RIGHT 124
-# define LEFT 123
-# define PLUS 69
-# define MINUS 78
+# define ESC 65307
+# define A 97
+# define S 115
+# define D 100
+# define W 119
+# define UP 65362
+# define DOWN 65364
+# define RIGHT 65363
+# define LEFT 65361
+# define PLUS 65451
+# define MINUS 65453
+# define INCREASE 61
+# define DECREASE 45
 
 /* Exit codes */
 # define EXIT_FAILURE 1
@@ -79,7 +81,8 @@ typedef struct s_point
 	/* --- graph --- */
 void	ft_my_mpp(t_img *img, int x, int y, int color);
 int		ft_trgb(int t, int r, int g, int b);
-int		ft_close(int key, void *mlx, void *mlx_win);
+int		ft_close(int key, t_img *img);
+int		ft_closebutton(int buttoncode, t_img *img);
 	/* --- map --- */
 void	ft_build_mtx(t_map *map, char *path);
 void	ft_build_map(t_map *map, char *path);
