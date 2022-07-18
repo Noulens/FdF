@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/11 22:45:54 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/18 13:06:14 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_data
 	int		bpp;
 	int		line_length;
 	int		endian;
+	void	*mlx;
+	void	*win;
 }	t_img;
 
 typedef struct s_map
@@ -47,12 +49,6 @@ typedef struct s_point
 	int	z;
 	int	color;
 }	t_point;
-
-typedef struct s_win
-{
-	void	*mlx;
-	void	*win;
-}	t_win;
 
 /* This is a minimal set of ANSI/VT100 color codes */
 # define END "\033[0m"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 17:23:23 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/11 22:27:17 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/18 13:24:42 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int	ft_atoi_base(const char *str, int base)
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32 || str[i] == ',')
 		++i;
 	strlen = ft_strlen(str + i);
-	if (strlen >= 2	&& str[i] == '0' && ft_tolower(str[i + 1]) == 'x')
+	if (strlen >= 2 && str[i] == '0' && ft_tolower(str[i + 1]) == 'x')
 		i += 2;
-	else if (strlen >=3 && str[i] == '0'
-			&& str[i + 1] == 3 && str[i + 2] == '3')
+	else if (strlen >= 3 && str[i] == '0'
+		&& str[i + 1] == 3 && str[i + 2] == '3')
 		i += 3;
 	result = 0;
 	ft_setbase(&b, base);

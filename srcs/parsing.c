@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:24:19 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/12 09:23:19 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/18 13:22:24 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ft_check_map(char *path, t_map *map)
 	int		tmp;
 	char	*ptr;
 
+	map->length = 0;
+	map->width = 0;
 	fd = open(path, O_RDONLY);
 	ptr = get_next_line(fd);
 	while (ptr)
@@ -59,8 +61,6 @@ int	ft_check_map(char *path, t_map *map)
 		ptr = get_next_line(fd);
 	}
 	close(fd);
-	if (map->length != map->width)
-		return (0);
 	return (1);
 }
 
@@ -71,7 +71,7 @@ void	ft_build_map(t_map *map, char *path)
 	int		fd;
 	int		i;
 	int		j;
-	
+
 	fd = open(path, O_RDONLY);
 	p = get_next_line(fd);
 	i = 0;
@@ -99,7 +99,7 @@ void	ft_build_color(t_map *map, char *path)
 	int		fd;
 	int		i;
 	int		j;
-	
+
 	fd = open(path, O_RDONLY);
 	p = get_next_line(fd);
 	i = 0;
