@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/18 19:28:58 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/18 19:39:35 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	main(int argc, char **argv)
 			&img->endian);
 	ft_draw(&points, img, data);
 	mlx_put_image_to_window(data->mlx, data->win, img->img, 0, 0);
-	ft_free_map(&data);
 	mlx_hook(data->win, 2, 1L << 0, ft_close, &data->win);
 	//mlx_key_hook(data->win, ft_keyhook, &data);
 	mlx_loop(data->mlx);
+	ft_free_map(&data);
 	return (0);
 }
