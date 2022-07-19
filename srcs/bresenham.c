@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/19 12:03:46 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:19:37 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_err(int a, int b)
 		return (-b);
 }
 
-void	ft_non_naive_bresenham(t_point *points, t_img *img, t_map *data)
+void	ft_bresenham(t_point *points, t_img *img)
 {
 	register int	e2;
 
@@ -37,11 +37,10 @@ void	ft_non_naive_bresenham(t_point *points, t_img *img, t_map *data)
 	points->sx = ft_slope(points->x0, points->x1);
 	points->sy = ft_slope(points->y0, points->y1);
 	points->error = ft_err(points->dx, points->dy) / 2;
-	while (1)
+	while (points->x0 - points->x1 || points->y0 - points->y1)
 	{
-		ft_my_mpp(img, points->x0, points->y0, ft_get_matrix_color(data, points->y0, points->x0));
-		if (points->x0 == points->x1 && points->y0 == points->y1)
-			break ;
+		//ft_printf("y = %d, x = %d\n", points->y0, points->x0);
+		ft_my_mpp(img, points->x0, points->y0, points->color);
 		e2 = points->error;
 		if (e2 > -points->dx)
 		{
@@ -56,22 +55,45 @@ void	ft_non_naive_bresenham(t_point *points, t_img *img, t_map *data)
 	}
 }
 
+static void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
+{
+	if (decide == 1)
+	{
+		points->x0 = *tmp_x * points->zoom;
+		points->y0 = *tmp_y * points->zoom;
+		points->x1 = (*tmp_x + 1) * points->zoom;
+		points->y1 = points->y0;
+	}
+	else
+	{
+		points->x0 = *tmp_x * points->zoom;
+		points->y0 = *tmp_y * points->zoom;
+		points->y1 = (*tmp_y + 1) * points->zoom;
+		points->x1 = points->x0;
+	}
+}
+
 void	ft_draw(t_point *points, t_img *img, t_map *data)
 {
-	points->y0 = 0;
-	while (points->y0 <= data->length)
+	int	tmp_x;
+	int	tmp_y;
+
+	tmp_y = 0;
+	while (tmp_y < data->length)
 	{
-		points->x0 = 0;
-		while (points->x0 < data->width)
+		tmp_x = 0;
+		while (tmp_x < data->width)
 		{
-			points->x1 = (points->x0 + 1);
-			points->y1 = points->y0;
-			ft_non_naive_bresenham(points, img, data);
-			points->x0++;
+			points->color = ft_get_matrix_color(data, tmp_y, tmp_x);
+			//ft_printf("y = %d, x = %d, color = %x\n", tmp_y, tmp_x, points->color);
+			ft_zoom(points, &tmp_x, &tmp_y, 1);
+			//ft_printf("bres 1\n");
+			ft_bresenham(points, img);
+			ft_zoom(points, &tmp_x, &tmp_y, 0);
+			//ft_printf("bres 2\n");
+			ft_bresenham(points, img);
+			tmp_x++;
 		}
-		points->y1 = (points->y0 + 1);
-		points->x1 = points->x0;
-		ft_non_naive_bresenham(points, img, data);
-		points->y0++;
+		tmp_y++;
 	}
 }

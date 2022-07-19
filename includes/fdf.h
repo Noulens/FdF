@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/19 12:04:02 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/19 17:18:18 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <math.h>
 # include <errno.h>
 # include <string.h>
+
+# define Y_SIZE 1080
+# define X_SIZE 1920
 
 /* structures */
 typedef struct s_data
@@ -54,6 +57,7 @@ typedef struct s_point
 	int	dy;
 	int	sx;
 	int	sy;
+	int	zoom;
 }	t_point;
 
 /* This is a minimal set of ANSI/VT100 color codes */
@@ -88,7 +92,7 @@ typedef struct s_point
 void	ft_my_mpp(t_img *img, int x, int y, int color);
 int		ft_trgb(int t, int r, int g, int b);
 int		ft_close(int key, t_map *data);
-int		ft_closebutton(void *param);
+int		ft_closebutton(void *param, t_map **data);
 
 	/* --- Key events --- */
 void	ft_keyhook(int keycode, t_map *data);
@@ -98,7 +102,7 @@ void	ft_build_map(t_map *map, char *path);
 int		ft_check_map(char *path, t_map *map);
 void	ft_build_color(t_map *map, char *path);
 void	ft_free_map(t_map **map);
-void	ft_non_naive_bresenham(t_point *points, t_img *img, t_map *data);
+void	ft_bresenham(t_point *points, t_img *img);
 void	ft_draw(t_point *points, t_img *img, t_map *data);
 	/* --- matrix --- */
 int		ft_get_matrix_int(t_map *map, int i, int j);
