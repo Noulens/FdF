@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/19 17:18:18 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:20:27 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,17 @@ void	ft_my_mpp(t_img *img, int x, int y, int color);
 int		ft_trgb(int t, int r, int g, int b);
 int		ft_close(int key, t_map *data);
 int		ft_closebutton(void *param, t_map **data);
-
+void	ft_bresenham(t_point *points, t_img *img);
+void	ft_draw(t_point *points, t_img *img, t_map *data);
 	/* --- Key events --- */
 void	ft_keyhook(int keycode, t_map *data);
 	/* --- map --- */
 void	ft_build_mtx(t_map *map, char *path);
 void	ft_build_map(t_map *map, char *path);
 int		ft_check_map(char *path, t_map *map);
+int		ft_fdf_file_checker(char *path);
 void	ft_build_color(t_map *map, char *path);
 void	ft_free_map(t_map **map);
-void	ft_bresenham(t_point *points, t_img *img);
-void	ft_draw(t_point *points, t_img *img, t_map *data);
 	/* --- matrix --- */
 int		ft_get_matrix_int(t_map *map, int i, int j);
 void	ft_set_matrix_int(t_map *map, int i, int j, int val);

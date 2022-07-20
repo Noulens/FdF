@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:24:19 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/19 15:44:23 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:37:26 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,17 @@ int	ft_check_map(char *path, t_map *map)
 	map->width = 0;
 	fd = open(path, O_RDONLY);
 	ptr = get_next_line(fd);
+	if (!ptr || ptr[0] == '\n')
+		return (close(fd), free(ptr), 0);
 	while (ptr)
 	{
+		if (ptr[0] == '\n')
+			return (close(fd), free(ptr), 1);
 		tmp = map->width;
 		map->length++;
 		map->width = ft_count_word(ptr, ' ');
 		if ((tmp != 0 && tmp != map->width) || map->width == 0)
-			return (free(ptr), 0);
+			return (close(fd), free(ptr), 0);
 		free(ptr);
 		ptr = get_next_line(fd);
 	}
@@ -80,14 +84,12 @@ void	ft_build_map(t_map *map, char *path)
 		ptr = ft_split(p, ' ');
 		j = 0;
 		while (ptr[j])
-		{
-			map->matrix[0][i] = ft_atoi(ptr[j]);
-			++j;
-			++i;
-		}
+			map->matrix[0][i++] = ft_atoi(ptr[j++]);
 		ft_free_split(ptr);
 		free (p);
 		p = get_next_line(fd);
+		if (p && p[0] == '\n')
+			return (close(fd), free (p), (void)0);
 	}
 	close(fd);
 }
@@ -108,14 +110,12 @@ void	ft_build_color(t_map *map, char *path)
 		ptr = ft_split(p, ' ');
 		j = 0;
 		while (ptr[j])
-		{
-			map->matrix[1][i] = ft_atoi_base(ft_strchr(ptr[j], ','), 16);
-			++j;
-			++i;
-		}
+			map->matrix[1][i++] = ft_atoi_base(ft_strchr(ptr[j++], ','), 16);
 		ft_free_split(ptr);
 		free (p);
 		p = get_next_line(fd);
+		if (p && p[0] == '\n')
+			return (close(fd), free (p), (void)0);
 	}
 	close(fd);
 }
