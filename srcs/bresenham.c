@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 18:16:34 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:36:03 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	ft_bresenham(t_point *points, t_img *img)
 {
 	register int	e2;
 
-	points->dx = abs(points->x1 - points->x0);
-	points->dy = abs(points->y1 - points->y0);
+	points->dx = fabsf(points->x1 - points->x0);
+	points->dy = fabsf(points->y1 - points->y0);
 	points->sx = ft_slope(points->x0, points->x1);
 	points->sy = ft_slope(points->y0, points->y1);
 	points->error = ft_err(points->dx, points->dy) / 2;
@@ -97,4 +97,5 @@ void	ft_draw(t_point *points, t_img *img, t_map *data)
 		}
 		tmp_y++;
 	}
+	//ft_printf("x = %d, y = %d\n", tmp_x, tmp_y);
 }

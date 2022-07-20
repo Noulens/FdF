@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 18:16:46 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:49:35 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	ft_init(t_img **img, t_map **data, char *path, int argc)
 	}
 }
 
+//mlx_key_hook(data->win, ft_keyhook, &data);
+
 int	main(int argc, char **argv)
 {
 	t_img	*img;
@@ -53,12 +55,11 @@ int	main(int argc, char **argv)
 	img->img = mlx_new_image(data->mlx, X_SIZE, Y_SIZE);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
 			&img->endian);
-	points.zoom = 2;
+	points.zoom = 50;
 	ft_draw(&points, img, data);
 	mlx_put_image_to_window(data->mlx, data->win, img->img, 0, 0);
 	mlx_hook(data->win, 2, 1L << 0, ft_close, &data->win);
 	mlx_hook(data->win, 17, 1L << 17, ft_closebutton, &data->win);
-	//mlx_key_hook(data->win, ft_keyhook, &data);
 	mlx_loop(data->mlx);
 	ft_free_map(&data);
 	return (0);

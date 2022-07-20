@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 14:20:27 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:35:11 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ typedef struct s_map
 
 typedef struct s_point
 {
-	int	x1;
-	int	y1;
-	int	x0;
-	int	y0;
-	int	color;
-	int	error;
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	zoom;
+	float	x1;
+	float	y1;
+	float	x0;
+	float	y0;
+	float	error;
+	float	dx;
+	float	dy;
+	float	sx;
+	float	sy;
+	int		color;
+	int		zoom;
 }	t_point;
 
 /* This is a minimal set of ANSI/VT100 color codes */
