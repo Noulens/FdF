@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 18:36:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:05:13 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	ft_bresenham(t_point *points, t_img *img)
 	while (points->x0 - points->x1 || points->y0 - points->y1)
 	{
 		//ft_printf("y = %d, x = %d\n", points->y0, points->x0);
-		ft_my_mpp(img, points->x0, points->y0, points->color);
+		if (points->x0 <= X_SIZE && points->y0 <= Y_SIZE)
+			ft_my_mpp(img, points->x0, points->y0, points->color);
 		e2 = points->error;
 		if (e2 > -points->dx)
 		{
