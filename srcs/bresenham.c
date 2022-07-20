@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/19 18:19:37 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:16:34 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
 	{
 		points->x0 = *tmp_x * points->zoom;
 		points->y0 = *tmp_y * points->zoom;
-		points->x1 = (*tmp_x + 1) * points->zoom;
+		points->x1 = (*tmp_x + 1) * points->zoom + 1;
 		points->y1 = points->y0;
 	}
 	else
@@ -85,13 +85,14 @@ void	ft_draw(t_point *points, t_img *img, t_map *data)
 		while (tmp_x < data->width)
 		{
 			points->color = ft_get_matrix_color(data, tmp_y, tmp_x);
-			//ft_printf("y = %d, x = %d, color = %x\n", tmp_y, tmp_x, points->color);
 			ft_zoom(points, &tmp_x, &tmp_y, 1);
 			//ft_printf("bres 1\n");
-			ft_bresenham(points, img);
+			if (tmp_x != data->width - 1)
+				ft_bresenham(points, img);
 			ft_zoom(points, &tmp_x, &tmp_y, 0);
 			//ft_printf("bres 2\n");
-			ft_bresenham(points, img);
+			if (tmp_y != data->length - 1)
+				ft_bresenham(points, img);
 			tmp_x++;
 		}
 		tmp_y++;
