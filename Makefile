@@ -82,4 +82,4 @@ call: all clean # Clean generated object files then clean libft target and objec
 
 .PHONY	: all clean fclean re call
 
-#.SILENT :
+.SILENT :

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 19:18:32 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 20:37:26 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 	t_point	points;
 
 	ft_init(&img, &data, argv[1], argc);
-	ft_build_mtx(data, argv[1]);
+	ft_build_mtx(data, argv[1]); //!\\-----> Regler pbm sur le free de data et img en cas d'echec du malloc de la mtx
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, X_SIZE, Y_SIZE, "Hell world");
 	img->img = mlx_new_image(data->mlx, X_SIZE, Y_SIZE);
