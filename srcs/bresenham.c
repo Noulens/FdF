@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 19:05:13 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 20:23:19 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_bresenham(t_point *points, t_img *img)
 	points->sx = ft_slope(points->x0, points->x1);
 	points->sy = ft_slope(points->y0, points->y1);
 	points->error = ft_err(points->dx, points->dy) / 2;
-	while (points->x0 - points->x1 || points->y0 - points->y1)
+	while ((int)(points->x0 - points->x1) || (int)(points->y0 - points->y1))
 	{
 		//ft_printf("y = %d, x = %d\n", points->y0, points->x0);
 		if (points->x0 <= X_SIZE && points->y0 <= Y_SIZE)

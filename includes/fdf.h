@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 18:35:11 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/20 20:30:01 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_point
 	float	y1;
 	float	x0;
 	float	y0;
+	float	z0;
+	float	z1;
 	float	error;
 	float	dx;
 	float	dy;
