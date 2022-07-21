@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 20:23:19 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/21 17:00:07 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_err(int a, int b)
 
 void	ft_bresenham(t_point *points, t_img *img)
 {
-	register int	e2;
+	register float	e2;
 
 	points->dx = fabsf(points->x1 - points->x0);
 	points->dy = fabsf(points->y1 - points->y0);
