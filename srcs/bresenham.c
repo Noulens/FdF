@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/21 17:00:07 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/21 22:15:04 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	ft_draw(t_point *points, t_img *img, t_map *data)
 {
 	int	tmp_x;
 	int	tmp_y;
+	int	tmp_z;
 
 	tmp_y = 0;
 	while (tmp_y < data->length)
