@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 20:30:01 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:45:28 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 
 # define Y_SIZE 1080
 # define X_SIZE 1920
+# define TRUE_ISO 0.523599
+# define DIMETRIC_ISO 0.46373398
 
 /* structures */
 typedef struct s_data
@@ -60,6 +62,8 @@ typedef struct s_point
 	float	sy;
 	int		color;
 	int		zoom;
+	int		offsetx;
+	int		offsety;
 }	t_point;
 
 /* This is a minimal set of ANSI/VT100 color codes */
@@ -97,6 +101,8 @@ int		ft_close(int key, t_map *data);
 int		ft_closebutton(void *param, t_map **data);
 void	ft_bresenham(t_point *points, t_img *img);
 void	ft_draw(t_point *points, t_img *img, t_map *data);
+	/* --- isometry --- */
+void	ft_isometric(t_point *points);
 	/* --- Key events --- */
 void	ft_keyhook(int keycode, t_map *data);
 	/* --- map --- */
