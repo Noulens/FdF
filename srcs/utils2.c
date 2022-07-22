@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:08:25 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/22 20:03:51 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/22 22:44:16 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 void	ft_findoffset(t_map *data, t_point *points)
 {
-	points->offsetx = (((X_SIZE / 2 - (data->width * points->zoom) / 2) - (Y_SIZE / 2 - (data->length * points->zoom) / 2)) * cos(TRUE_ISO));
-	points->offsety = (((X_SIZE / 2 - (data->width * points->zoom) / 2) + (Y_SIZE / 2 - (data->length * points->zoom) / 2)) * sin(TRUE_ISO));
+	points->offsetx = (X_SIZE / 2 - (data->width * points->zoom) / 2);
+	points->offsety = (Y_SIZE / 2 - (data->length * points->zoom) / 2);
 }
 
 int	ft_findzoom(int length, int width)
