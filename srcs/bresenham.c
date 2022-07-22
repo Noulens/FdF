@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/22 15:02:47 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/22 20:06:13 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ void	ft_bresenham(t_point *points, t_img *img)
 	points->error = ft_err(points->dx, points->dy) / 2;
 	while ((int)(points->x0 - points->x1) || (int)(points->y0 - points->y1))
 	{
-		if (points->x0 <= X_SIZE && points->y0 <= Y_SIZE)
-			ft_my_mpp(img, points->x0, points->y0, points->color);
+		//ft_printf("x0 = %d, y0 = %d, x1 = %d, y1 = %d\n", points->x0, points->y0, points->x1, points->y1);
+		if (points->x0 <= X_SIZE && points->y0 <= Y_SIZE
+			&& points->x0 >= 0 && points->y0 >= 0)
+			ft_my_mpp(img, (int)points->x0, (int)points->y0, points->color);
 		e2 = points->error;
 		if (e2 > -points->dx)
 		{
@@ -55,30 +57,22 @@ void	ft_bresenham(t_point *points, t_img *img)
 	}
 }
 
-void	ft_isometric(t_point *points)
-{
-	points->x0 = (points->x0 - points->y0) * cos(TRUE_ISO);
-	points->y0 = (points->x0 + points->y0) * sin(TRUE_ISO) - points->z0;
-	points->x1 = (points->x1 - points->y1) * cos(TRUE_ISO);
-	points->y1 = (points->x1 + points->y1) * sin(TRUE_ISO) - points->z1;
-}
-
 static void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
 {
-	points->x0 = *tmp_x * points->zoom + points->offsetx;
-	points->y0 = *tmp_y * points->zoom + points->offsety;
-	points->z0 *= points->zoom;
+	points->x0 = *tmp_x * points->zoom;
+	points->y0 = *tmp_y * points->zoom;
 	if (decide == 1)
 	{
-		points->x1 = ((*tmp_x + 1) * points->zoom + 1) + points->offsetx;
+		points->x1 = ((*tmp_x + 1) * points->zoom + 1);
 		points->y1 = points->y0;
+		ft_isometric(points);
 	}
 	else
 	{
-		points->y1 = ((*tmp_y + 1) * points->zoom) + points->offsety;
+		points->y1 = ((*tmp_y + 1) * points->zoom + 1);
 		points->x1 = points->x0;
+		ft_isometric(points);
 	}
-	ft_isometric(points);
 }
 
 void	ft_draw(t_point *points, t_img *img, t_map *data)
@@ -86,26 +80,25 @@ void	ft_draw(t_point *points, t_img *img, t_map *data)
 	int	tmp_x;
 	int	tmp_y;
 
-	tmp_y = 0;
-	while (tmp_y < data->length)
+	tmp_y = -1;
+	while (++tmp_y < data->length)
 	{
-		tmp_x = 0;
-		while (tmp_x < data->width)
+		tmp_x = -1;
+		while (++tmp_x < data->width)
 		{
 			points->color = ft_get_matrix_color(data, tmp_y, tmp_x);
 			points->z0 = ft_get_matrix_int(data, tmp_y, tmp_x);
 			if (tmp_x < data->width - 1 && tmp_y < data->length - 1)
-				points->z1 = ft_get_matrix_int(data, tmp_y + 1, tmp_x + 1);
+				points->z1 = ft_get_matrix_int(data, tmp_y, tmp_x + 1);
 			ft_zoom(points, &tmp_x, &tmp_y, 1);
 			if (tmp_x != data->width - 1)
 				ft_bresenham(points, img);
 			points->z0 = ft_get_matrix_int(data, tmp_y, tmp_x);
-			points->z1 = ft_get_matrix_int(data, tmp_y + 1, tmp_x + 1);
+			if (tmp_x < data->width - 1 && tmp_y < data->length - 1)
+				points->z1 = ft_get_matrix_int(data, tmp_y + 1, tmp_x);
 			ft_zoom(points, &tmp_x, &tmp_y, 0);
 			if (tmp_y != data->length - 1)
 				ft_bresenham(points, img);
-			tmp_x++;
 		}
-		tmp_y++;
 	}
 }

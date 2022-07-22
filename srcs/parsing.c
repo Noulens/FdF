@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:24:19 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/20 16:37:26 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/22 20:28:06 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_build_map(t_map *map, char *path)
 	{
 		ptr = ft_split(p, ' ');
 		j = 0;
-		while (ptr[j])
+		while (ptr[j] && *ptr[j] != '\n')
 			map->matrix[0][i++] = ft_atoi(ptr[j++]);
 		ft_free_split(ptr);
 		free (p);
@@ -109,7 +109,7 @@ void	ft_build_color(t_map *map, char *path)
 	{
 		ptr = ft_split(p, ' ');
 		j = 0;
-		while (ptr[j])
+		while (ptr[j] && *ptr[j] != '\n')
 			map->matrix[1][i++] = ft_atoi_base(ft_strchr(ptr[j++], ','), 16);
 		ft_free_split(ptr);
 		free (p);

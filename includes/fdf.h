@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/22 14:45:28 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:15:41 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@
 
 # define Y_SIZE 1080
 # define X_SIZE 1920
-# define TRUE_ISO 0.523599
-# define DIMETRIC_ISO 0.46373398
+# define TRUE_ISO 0.524
+# define DIMETRIC_ISO 0.464
+# define SQRT3DIVBY2 0.866
 
 /* structures */
 typedef struct s_data
@@ -53,8 +54,8 @@ typedef struct s_point
 	float	y1;
 	float	x0;
 	float	y0;
-	float	z0;
-	float	z1;
+	int		z0;
+	int		z1;
 	float	error;
 	float	dx;
 	float	dy;
@@ -101,6 +102,8 @@ int		ft_close(int key, t_map *data);
 int		ft_closebutton(void *param, t_map **data);
 void	ft_bresenham(t_point *points, t_img *img);
 void	ft_draw(t_point *points, t_img *img, t_map *data);
+int		ft_findzoom(int length, int width);
+void	ft_findoffset(t_map *data, t_point *points);
 	/* --- isometry --- */
 void	ft_isometric(t_point *points);
 	/* --- Key events --- */

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/19 14:20:26 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:57:48 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,4 @@ void	ft_free_map(t_map **map)
 	free((*map)->matrix[0]);
 	free((*map)->matrix[1]);
 	free((*map)->matrix);
-	free((*map));
 }
