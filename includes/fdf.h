@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/22 22:51:00 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/22 23:55:30 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ typedef struct s_point
 	float	y1;
 	float	x0;
 	float	y0;
-	int		z0;
-	int		z1;
+	float	z0;
+	float	z1;
+	float	shortest;
 	float	error;
-	float	dx;
-	float	dy;
+	float	longest;
+	float	n;
+	int		dx;
+	int		dy;
 	float	sx;
 	float	sy;
 	int		color;
@@ -103,6 +106,7 @@ int		ft_closebutton(void *param, t_map **data);
 void	ft_bresenham(t_point *points, t_img *img);
 void	ft_draw(t_point *points, t_img *img, t_map *data);
 int		ft_findzoom(int length, int width);
+void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
 void	ft_findoffset(t_map *data, t_point *points);
 void	ft_line(t_point *points, t_img *img);
 	/* --- isometry --- */
