@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:08:25 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/25 19:37:02 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:52:47 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_findzoom(int length, int width)
 	zoommin = 1;
 	zoomx = X_SIZE / width;
 	zoomy = Y_SIZE / length;
-	printf("%d ", length);
 	if (zoomy < zoomx && zoomy < 60)
 		return (zoomy);
 	else if (zoomy >= zoomx && zoomx < 60)
