@@ -31,6 +31,7 @@ NAME	=	fdf
 CFILES	=	./srcs/main.c\
 			./srcs/parsing.c\
 			./srcs/matrix.c\
+			./srcs/utils3.c\
 			./srcs/utils2.c\
 			./srcs/utils1.c\
 			./srcs/bresenham.c

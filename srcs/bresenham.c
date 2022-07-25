@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/25 17:55:38 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:48:37 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void	ft_draw(t_point *points, t_img *img, t_map *data)
 	int	tmp_x;
 	int	tmp_y;
 
+	points->width = data->width;
+	points->length = data->length;
 	tmp_y = -1;
 	while (++tmp_y < data->length)
 	{
@@ -96,15 +98,11 @@ void	ft_draw(t_point *points, t_img *img, t_map *data)
 		while (++tmp_x < data->width)
 		{
 			points->color = ft_get_matrix_color(data, tmp_y, tmp_x);
-			points->z0 = ft_get_matrix_int(data, tmp_y, tmp_x) * (points->zoom >> 1);
-			if (tmp_x < data->width - 1)
-				points->z1 = ft_get_matrix_int(data, tmp_y, tmp_x + 1) * (points->zoom >> 1);
+			ft_get_z_1(data, points, &tmp_x, &tmp_y);
 			ft_zoom(points, &tmp_x, &tmp_y, 1);
 			if (tmp_x != data->width - 1)
 				ft_bresenham(points, img);
-			points->z0 = ft_get_matrix_int(data, tmp_y, tmp_x) * (points->zoom >> 1);
-			if (tmp_y < data->length - 1)
-				points->z1 = ft_get_matrix_int(data, tmp_y + 1, tmp_x) * (points->zoom >> 1);
+			ft_get_z_2(data, points, &tmp_x, &tmp_y);
 			ft_zoom(points, &tmp_x, &tmp_y, 0);
 			if (tmp_y != data->length - 1)
 				ft_bresenham(points, img);

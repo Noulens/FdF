@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/25 17:48:27 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:57:03 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ static void	ft_init(t_img **img, t_map **data, char *path, int argc)
 
 //mlx_key_hook(data->win, ft_keyhook, &data);
 
+void	ft_offset(t_point *points)
+{
+	points->offsetx = 0;
+	points->offsety = 0;
+	points->offsetz = 0;
+}
+
 int	main(int argc, char **argv)
 {
 	t_img	*img;
@@ -55,8 +62,8 @@ int	main(int argc, char **argv)
 	img->img = mlx_new_image(data->mlx, X_SIZE, Y_SIZE);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
 			&img->endian);
-	points.zoom = ft_findzoom(data->length, data->width);;
-	ft_findoffset(data, &points);
+	points.zoom = ft_findzoom(data->length, data->width);
+	ft_offset(&points);
 	ft_draw(&points, img, data);
 	mlx_put_image_to_window(data->mlx, data->win, img->img, 0, 0);
 	mlx_hook(data->win, 2, 1L << 0, ft_close, &data->win);

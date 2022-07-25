@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:08:25 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/25 17:58:32 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:37:02 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@
 	
 }*/
 
-void	ft_findoffset(t_map *data, t_point *points)
-{
-	points->offsetx = 0;
-	points->offsety = 0;
-	(void)data;
-}
-
 int	ft_findzoom(int length, int width)
 {
 	int	zoomx;
@@ -33,6 +26,7 @@ int	ft_findzoom(int length, int width)
 	zoommin = 1;
 	zoomx = X_SIZE / width;
 	zoomy = Y_SIZE / length;
+	printf("%d ", length);
 	if (zoomy < zoomx && zoomy < 60)
 		return (zoomy);
 	else if (zoomy >= zoomx && zoomx < 60)
@@ -63,19 +57,27 @@ void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
 
 void	ft_isometric(t_point *points)
 {
-	int	previousx;
-	int	previousy;
-	int	previousx1;
-	int	previousy1;
+	int	px;
+	int	py;
+	int	px1;
+	int	py1;
 
-	previousx = points->x0;
-	previousy = points->y0;
-	previousx1 = points->x1;
-	previousy1 = points->y1;
-	points->x0 = (previousx - previousy) * cos(TRUE_ISO);
-	points->y0 = (previousx + previousy) * sin(TRUE_ISO) - points->z0;
-	points->x1 = (previousx1 - previousy1) * cos(TRUE_ISO);
-	points->y1 = (previousx1 + previousy1) * sin(TRUE_ISO) - points->z1;
+	px = points->x0;
+	py = points->y0;
+	px1 = points->x1;
+	py1 = points->y1;
+	points->x0 = (px - py) * cos(TRUE_ISO)- (((points->width
+					- points->length) * points->zoom) * cos(TRUE_ISO)) + XC
+		+ points->offsetx;
+	points->y0 = (px + py) * sin(TRUE_ISO) - points->z0
+		- ((points->zoom * (points->width + points->length + 1))
+			* sin(TRUE_ISO) - points->zoom) + Y_SIZE + points->offsety;
+	points->x1 = (px1 - py1) * cos(TRUE_ISO) - (((points->width
+					- points->length) * points->zoom) * cos(TRUE_ISO)) + XC
+		+ points->offsetx;
+	points->y1 = (px1 + py1) * sin(TRUE_ISO) - points->z1
+		- ((points->zoom * (points->width + points->length + 1))
+			* sin(TRUE_ISO) - points->zoom) + Y_SIZE + points->offsety;
 }
 
 int	ft_fdf_file_checker(char *path)
