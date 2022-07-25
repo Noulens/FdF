@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/23 00:00:17 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:55:38 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_slope(t_point *points, int *dx2)
 		*dx2 = 1;
 }
 
-static void	ft_identify(t_point *points, int *dx2, int *dy2)
+static void	ft_compare(t_point *points, int *dx2, int *dy2)
 {
 	if (!(points->longest > points->shortest))
 	{
@@ -52,10 +52,10 @@ static void	ft_init_line(t_point *points, int *dx2, int *dy2)
 	ft_slope(points, dx2);
 	points->longest = fabsf(points->sx);
 	points->shortest = fabsf(points->sy);
-	ft_identify(points, dx2, dy2);
+	ft_compare(points, dx2, dy2);
 }
 
-void	ft_line(t_point *points, t_img *img)
+void	ft_bresenham(t_point *points, t_img *img)
 {
 	int		i;
 	int		dx2;
@@ -67,7 +67,8 @@ void	ft_line(t_point *points, t_img *img)
 	{
 		if (points->x0 <= X_SIZE && points->y0 <= Y_SIZE
 			&& points->x0 >= 0 && points->y0 >= 0)
-			ft_my_mpp(img, (int)points->x0, (int)points->y0, points->color);
+			ft_my_mpp(img, (int)points->x0, (int)points->y0,
+				points->color);
 		points->n += points->shortest;
 		if (!(points->n < points->longest))
 		{
@@ -95,18 +96,18 @@ void	ft_draw(t_point *points, t_img *img, t_map *data)
 		while (++tmp_x < data->width)
 		{
 			points->color = ft_get_matrix_color(data, tmp_y, tmp_x);
-			points->z0 = ft_get_matrix_int(data, tmp_y, tmp_x);
-			if (tmp_x < data->width - 1 && tmp_y < data->length - 1)
-				points->z1 = ft_get_matrix_int(data, tmp_y, tmp_x + 1);
+			points->z0 = ft_get_matrix_int(data, tmp_y, tmp_x) * (points->zoom >> 1);
+			if (tmp_x < data->width - 1)
+				points->z1 = ft_get_matrix_int(data, tmp_y, tmp_x + 1) * (points->zoom >> 1);
 			ft_zoom(points, &tmp_x, &tmp_y, 1);
 			if (tmp_x != data->width - 1)
-				ft_line(points, img);
-			points->z0 = ft_get_matrix_int(data, tmp_y, tmp_x);
-			if (tmp_x < data->width - 1 && tmp_y < data->length - 1)
-				points->z1 = ft_get_matrix_int(data, tmp_y + 1, tmp_x);
+				ft_bresenham(points, img);
+			points->z0 = ft_get_matrix_int(data, tmp_y, tmp_x) * (points->zoom >> 1);
+			if (tmp_y < data->length - 1)
+				points->z1 = ft_get_matrix_int(data, tmp_y + 1, tmp_x) * (points->zoom >> 1);
 			ft_zoom(points, &tmp_x, &tmp_y, 0);
 			if (tmp_y != data->length - 1)
-				ft_line(points, img);
+				ft_bresenham(points, img);
 		}
 	}
 }

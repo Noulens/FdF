@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:08:25 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/22 23:38:51 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:58:32 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 void	ft_findoffset(t_map *data, t_point *points)
 {
-	points->offsetx = (X_SIZE / 2 - (data->width * points->zoom) / 2);
-	points->offsety = (Y_SIZE / 2 - (data->length * points->zoom) / 2);
+	points->offsetx = 0;
+	points->offsety = 0;
+	(void)data;
 }
 
 int	ft_findzoom(int length, int width)
@@ -44,17 +45,17 @@ int	ft_findzoom(int length, int width)
 
 void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
 {
-	points->x0 = *tmp_x * points->zoom + points->offsetx;
-	points->y0 = *tmp_y * points->zoom + points->offsety;
+	points->x0 = *tmp_x * points->zoom;
+	points->y0 = *tmp_y * points->zoom;
 	if (decide == 1)
 	{
-		points->x1 = ((*tmp_x + 1) * points->zoom + 1) + points->offsetx;
+		points->x1 = ((*tmp_x + 1) * points->zoom);
 		points->y1 = points->y0;
 		ft_isometric(points);
 	}
 	else
 	{
-		points->y1 = ((*tmp_y + 1) * points->zoom + 1) + points->offsety;
+		points->y1 = ((*tmp_y + 1) * points->zoom);
 		points->x1 = points->x0;
 		ft_isometric(points);
 	}
@@ -62,10 +63,19 @@ void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
 
 void	ft_isometric(t_point *points)
 {
-	points->x0 = (points->x0 - points->y0) * cos(TRUE_ISO);
-	points->y0 = (points->x0 + points->y0) * sin(TRUE_ISO) - points->z0;
-	points->x1 = (points->x1 - points->y1) * cos(TRUE_ISO);
-	points->y1 = (points->x1 + points->y1) * sin(TRUE_ISO) - points->z1;
+	int	previousx;
+	int	previousy;
+	int	previousx1;
+	int	previousy1;
+
+	previousx = points->x0;
+	previousy = points->y0;
+	previousx1 = points->x1;
+	previousy1 = points->y1;
+	points->x0 = (previousx - previousy) * cos(TRUE_ISO);
+	points->y0 = (previousx + previousy) * sin(TRUE_ISO) - points->z0;
+	points->x1 = (previousx1 - previousy1) * cos(TRUE_ISO);
+	points->y1 = (previousx1 + previousy1) * sin(TRUE_ISO) - points->z1;
 }
 
 int	ft_fdf_file_checker(char *path)

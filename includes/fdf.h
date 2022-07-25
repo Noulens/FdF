@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/22 23:55:30 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:39:51 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 
 # define Y_SIZE 1080
 # define X_SIZE 1920
+# define XC (X_SIZE >> 1)
+# define YC (Y_SIZE >> 1)
 # define TRUE_ISO 0.523599
 # define DIMETRIC_ISO 0.463744
 # define SQRT3DIVBY2 0.866
@@ -57,7 +59,8 @@ typedef struct s_point
 	float	z0;
 	float	z1;
 	float	shortest;
-	float	error;
+	int		width;
+	int		length;
 	float	longest;
 	float	n;
 	int		dx;
@@ -68,6 +71,7 @@ typedef struct s_point
 	int		zoom;
 	int		offsetx;
 	int		offsety;
+	int		offetz;
 }	t_point;
 
 /* This is a minimal set of ANSI/VT100 color codes */
@@ -103,12 +107,11 @@ void	ft_my_mpp(t_img *img, int x, int y, int color);
 int		ft_trgb(int t, int r, int g, int b);
 int		ft_close(int key, t_map *data);
 int		ft_closebutton(void *param, t_map **data);
-void	ft_bresenham(t_point *points, t_img *img);
 void	ft_draw(t_point *points, t_img *img, t_map *data);
 int		ft_findzoom(int length, int width);
 void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
 void	ft_findoffset(t_map *data, t_point *points);
-void	ft_line(t_point *points, t_img *img);
+void	ft_bresenham(t_point *points, t_img *img);
 	/* --- isometry --- */
 void	ft_isometric(t_point *points);
 	/* --- Key events --- */

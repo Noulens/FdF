@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/23 00:00:46 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:48:27 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,6 @@ int	main(int argc, char **argv)
 			&img->endian);
 	points.zoom = ft_findzoom(data->length, data->width);;
 	ft_findoffset(data, &points);
-	//points.x0 = 0;
-	//points.y0 = 1000;
-	//points.x1 = 10;
-	//points.y1 = 0;
-	//points.color = 0xff0000;
-	//ft_line(&points, img);
 	ft_draw(&points, img, data);
 	mlx_put_image_to_window(data->mlx, data->win, img->img, 0, 0);
 	mlx_hook(data->win, 2, 1L << 0, ft_close, &data->win);
