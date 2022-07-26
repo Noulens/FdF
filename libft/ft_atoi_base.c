@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 17:23:23 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/18 14:47:45 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/26 12:07:49 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_atoi_base(const char *str, int base)
 	i = 0;
 	b = NULL;
 	if (str == NULL)
-		return (16777215);
+		return (0);
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32 || str[i] == ',')
 		++i;
 	strlen = ft_strlen(str + i);

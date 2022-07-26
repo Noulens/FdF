@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/25 19:49:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:34:37 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 # define Y_SIZE 1080
 # define X_SIZE 1920
-# define XC (X_SIZE / 2)
-# define YC (Y_SIZE / 2)
+# define XC (X_SIZE >> 1)
+# define YC (Y_SIZE >> 1)
 # define TRUE_ISO 0.523599
 # define DIMETRIC_ISO 0.463744
 # define SQRT3DIVBY2 0.866
@@ -52,13 +52,13 @@ typedef struct s_map
 
 typedef struct s_point
 {
-	int	x1;
-	int	y1;
-	int	x0;
-	int	y0;
-	int	z0;
-	int	z1;
-	int	shortest;
+	int		x1;
+	int		y1;
+	int		x0;
+	int		y0;
+	int		z0;
+	int		z1;
+	int		shortest;
 	int		width;
 	int		length;
 	float	longest;
@@ -67,7 +67,8 @@ typedef struct s_point
 	int		dy;
 	float	sx;
 	float	sy;
-	int		color;
+	int		color1;
+	int		color2;
 	int		zoom;
 	int		offsetx;
 	int		offsety;

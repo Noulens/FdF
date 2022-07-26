@@ -53,10 +53,10 @@ all: subsystem $(NAME) # Make all
 subsystem: # Make the libft first then the minilibx
 	@echo "$(_BOLD)$(_IYELLOW)$(_PURPLE)Verifying libft status...$(_END)"
 	make -C $(LIB_PATH) all
-	@echo "$(_BOLD)$(_PURPLE)libft archive generated, nothing else to be done here 😎$(_END)"
+	@echo "$(_BOLD)$(_PURPLE)libft archive generated, nothing else to be done here$(_END)"
 	@echo "$(_BOLD)$(_IYELLOW)$(_PURPLE)Verifying minilibx status...$(_END)"
 	make -C $(MINILIBX_PATH) all
-	@echo "$(_BOLD)$(_PURPLE)minilibx archive generated, nothing else to be done here 😎$(_END)"
+	@echo "$(_BOLD)$(_PURPLE)minilibx archive generated, nothing else to be done here$(_END)"
 
 $(NAME): $(OBJECTS)
 	@echo "$(_BOLD)$(_BLUE)fdf: all object files generated$(_END)"

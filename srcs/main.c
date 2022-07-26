@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/25 18:57:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:48:27 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	ft_offset(t_point *points)
 
 int	main(int argc, char **argv)
 {
-	t_img	*img;
-	t_map	*data;
-	t_point	points;
+	t_img				*img;
+	t_map				*data;
+	register t_point	points;
 
 	ft_init(&img, &data, argv[1], argc);
 	ft_build_mtx(data, argv[1]); //!\\-----> Regler pbm sur le free de data et img en cas d'echec du malloc de la mtx
