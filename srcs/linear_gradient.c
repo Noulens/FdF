@@ -6,23 +6,23 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:45:27 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 18:03:28 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:25:48 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static int get_r(int rgb)
+static int	get_r(int rgb)
 {
 	return ((rgb >> 16) & 0xff);
 }
 
-static int get_g(int rgb)
+static int	get_g(int rgb)
 {
 	return ((rgb >> 8) & 0xff);
 }
 
-static int get_b(int rgb)
+static int	get_b(int rgb)
 {
 	return (rgb & 0xff);
 }
@@ -43,12 +43,8 @@ static int	ft_gradient(t_point	*points, int *i)
 	return (ft_rgb(r, g, b));
 }
 
-int	ft_linear_gradient(t_point *points, int *i)
+int	ft_lin_grad(t_point *points, int *i)
 {
-	//if (points->z0 == 0 && points->z1 == 0 && points->color == 0)
-	//	return (0xffffff);
-	//if (points->z0 == points->z1)
-	//	return (points->color);
 	if ((points->z0 < points->z1) || (points->z0 > points->z1))
 		return (ft_gradient(points, i));
 	else

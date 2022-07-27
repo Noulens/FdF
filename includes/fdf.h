@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 16:38:50 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:25:56 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	ft_draw(t_point *points, t_img *img, t_map *data);
 int		ft_findzoom(int length, int width);
 void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
 void	ft_bresenham(t_point *points, t_img *img);
-int		ft_linear_gradient(t_point *points, int *i);
+int		ft_lin_grad(t_point *points, int *i);
 void	ft_get_z_1(t_map *data, t_point *points, int *x, int *y);
 void	ft_get_z_2(t_map *data, t_point *points, int *x, int *y);
 	/* --- isometry --- */

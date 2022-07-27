@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 17:05:07 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:25:37 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ void	ft_bresenham(t_point *points, t_img *img)
 	{
 		if (points->x0 <= X_SIZE && points->y0 <= Y_SIZE
 			&& points->x0 >= 0 && points->y0 >= 0)
-			ft_my_mpp(img, (int)points->x0, (int)points->y0,
-				ft_linear_gradient(points, &i));
+			ft_my_mpp(img, points->x0, points->y0, ft_lin_grad(points, &i));
 		points->n += points->shortest;
 		if (!(points->n < points->longest))
 		{
@@ -98,12 +97,10 @@ void	ft_draw(t_point *points, t_img *img, t_map *data)
 		tmp_x = -1;
 		while (++tmp_x < data->width)
 		{
-			//points->color = ft_get_matrix_color(data, tmp_y, tmp_x);
 			ft_get_z_1(data, points, &tmp_x, &tmp_y);
 			ft_zoom(points, &tmp_x, &tmp_y, 1);
 			if (tmp_x != data->width - 1)
 				ft_bresenham(points, img);
-			//points->color = ft_get_matrix_color(data, tmp_y, tmp_x);
 			ft_get_z_2(data, points, &tmp_x, &tmp_y);
 			ft_zoom(points, &tmp_x, &tmp_y, 0);
 			if (tmp_y != data->length - 1)
