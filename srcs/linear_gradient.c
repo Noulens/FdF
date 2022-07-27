@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:45:27 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 17:06:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:03:28 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,12 @@ static int	ft_gradient(t_point	*points, int *i)
 
 int	ft_linear_gradient(t_point *points, int *i)
 {
-	if (points->z0 == 0 && points->z1 == 0 && points->color == 0)
-		return (0xffffff);
-	else if (points->z0 && points->z1 && points->z0 == points->z1
-		&& points->color == 0)
-		return (0xcc0000);
-	else if (points->z0 < points->z1
-		&& points->color == 0)
-		return (points->color = ft_gradient(points, i), points->color);
-	else if (points->z0 > points->z1
-		&& points->color == 0)
-		return(points->color = ft_gradient(points, i), points->color);
+	//if (points->z0 == 0 && points->z1 == 0 && points->color == 0)
+	//	return (0xffffff);
+	//if (points->z0 == points->z1)
+	//	return (points->color);
+	if ((points->z0 < points->z1) || (points->z0 > points->z1))
+		return (ft_gradient(points, i));
 	else
 		return (points->color);
 }
