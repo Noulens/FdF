@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 16:39:11 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:05:07 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_bresenham(t_point *points, t_img *img)
 
 	ft_init_line(points, &dx2, &dy2);
 	i = 0;
-	while (i++ <= points->longest)
+	while (i <= points->longest)
 	{
 		if (points->x0 <= X_SIZE && points->y0 <= Y_SIZE
 			&& points->x0 >= 0 && points->y0 >= 0)
@@ -81,6 +81,7 @@ void	ft_bresenham(t_point *points, t_img *img)
 			points->x0 += dx2;
 			points->y0 += dy2;
 		}
+		++i;
 	}
 }
 

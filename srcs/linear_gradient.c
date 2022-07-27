@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:45:27 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 16:52:54 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:06:03 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_linear_gradient(t_point *points, int *i)
 		&& points->color == 0)
 		return(points->color = ft_gradient(points, i), points->color);
 	else
-		return (0);
+		return (points->color);
 }
 
 /*
