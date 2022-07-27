@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 14:44:20 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:57:47 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_point
 	int		width;
 	int		length;
 	float	longest;
-	float	n;
+	int		n;
 	float	dx;
 	float	dy;
 	float	sx;
