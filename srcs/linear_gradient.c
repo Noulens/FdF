@@ -6,61 +6,70 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:45:27 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/26 16:43:51 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:52:54 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int get_r(int trgb)
+static int get_r(int rgb)
 {
-	return ((trgb >> 16) & 0xff);
+	return ((rgb >> 16) & 0xff);
 }
 
-int get_g(int trgb)
+static int get_g(int rgb)
 {
-	return ((trgb >> 8) & 0xff);
+	return ((rgb >> 8) & 0xff);
 }
 
-int get_b(int trgb)
+static int get_b(int rgb)
 {
-	return (trgb & 0xFF);
+	return (rgb & 0xff);
 }
 
-int	ft_gradient(t_point	*points, int *i)
+static int	ft_gradient(t_point	*points, int *i)
 {
-	int	r;
-	int	g;
-	int	b;
+	register int	r;
+	register int	g;
+	register int	b;
+	float			coeff1;
+	float			coeff2;
 
-	r = (*i / points->longest) * 
+	coeff1 = (points->longest - *i) / points->longest;
+	coeff2 = (*i / points->longest);
+	r = get_r(points->color) * coeff1 + coeff2 * get_r(points->color2);
+	g = get_g(points->color) * coeff1 + coeff2 * get_g(points->color2);
+	b = get_b(points->color) * coeff1 + coeff2 * get_b(points->color2);
+	return (ft_rgb(r, g, b));
 }
 
 int	ft_linear_gradient(t_point *points, int *i)
 {
-	if (points->z0 == 0 && points->z1 == 0 && points->color1 == 0)
-		points->color1 = 0xffffff;
+	if (points->z0 == 0 && points->z1 == 0 && points->color == 0)
+		return (0xffffff);
 	else if (points->z0 && points->z1 && points->z0 == points->z1
-		&& points->color1 == 0)
-		points->color1 = 0xcc0000;
+		&& points->color == 0)
+		return (0xcc0000);
 	else if (points->z0 < points->z1
-		&& points->color1 == 0)
-		points->color1 = ft_gradient();
+		&& points->color == 0)
+		return (points->color = ft_gradient(points, i), points->color);
 	else if (points->z0 > points->z1
-		&& points->color1 == 0)
-		points->color1 = ft_gradient();
+		&& points->color == 0)
+		return(points->color = ft_gradient(points, i), points->color);
+	else
+		return (0);
 }
 
 /*
-	if (points->z0 == 0 && points->z1 == 0 && points->color1 == 0)
-		points->color1 = 0xffffff;
+	if (points->z0 == 0 && points->z1 == 0 && points->color == 0)
+		points->color = 0xffffff;
 	else if (points->z0 && points->z1 && points->z0 == points->z1
-		&& points->color1 == 0)
-		points->color1 = 0xcc0000;
+		&& points->color == 0)
+		points->color = 0xcc0000;
 	else if (points->z0 < points->z1
-		&& points->color1 == 0)
-		points->color1 = ft_gradient();
+		&& points->color == 0)
+		points->color = ft_gradient();
 	else if (points->z0 > points->z1
-		&& points->color1 == 0)
-		points->color1 = ft_gradient();
+		&& points->color == 0)
+		points->color = ft_gradient();
 */

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   ft_atoi_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 17:23:23 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 16:37:32 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:18:40 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/fdf.h"
 
 static void	ft_setbase(char **p, int base)
 {
@@ -39,7 +39,7 @@ static int	ft_in_base(char c, char *base, int l)
 	return (-1);
 }
 
-int	ft_atoi_base(const char *str, int base)
+int	ft_atoi_color(const char *str, int base, int z)
 {
 	int		i;
 	int		strlen;
@@ -49,7 +49,7 @@ int	ft_atoi_base(const char *str, int base)
 	i = 0;
 	b = NULL;
 	if (str == NULL)
-		return (0);
+		return (ft_give_color(z));
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32 || str[i] == ',')
 		++i;
 	strlen = ft_strlen(str + i);

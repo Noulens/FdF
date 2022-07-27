@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/22 16:57:48 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:31:09 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_my_mpp(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	ft_trgb(int t, int r, int g, int b)
+int	ft_rgb(int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	return (r << 16 | g << 8 | b);
 }
 
 int	ft_closebutton(void *param, t_map **data)

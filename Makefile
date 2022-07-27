@@ -34,7 +34,8 @@ CFILES	=	./srcs/main.c\
 			./srcs/utils3.c\
 			./srcs/utils2.c\
 			./srcs/utils1.c\
-			./srcs/bresenham.c
+			./srcs/bresenham.c\
+			./srcs/linear_gradient.c\
 
 OBJECTS = 	$(CFILES:.c=.o)
 

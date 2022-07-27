@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 14:57:47 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 16:38:50 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_point
 	float	sx;
 	float	sy;
 	int		color;
+	int		color2;
 	int		zoom;
 	int		offsetx;
 	int		offsety;
@@ -104,13 +105,14 @@ typedef struct s_point
 /* Useful protos */
 	/* --- graph --- */
 void	ft_my_mpp(t_img *img, int x, int y, int color);
-int		ft_trgb(int t, int r, int g, int b);
+int		ft_rgb(int r, int g, int b);
 int		ft_close(int key, t_map *data);
 int		ft_closebutton(void *param, t_map **data);
 void	ft_draw(t_point *points, t_img *img, t_map *data);
 int		ft_findzoom(int length, int width);
 void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
 void	ft_bresenham(t_point *points, t_img *img);
+int		ft_linear_gradient(t_point *points, int *i);
 void	ft_get_z_1(t_map *data, t_point *points, int *x, int *y);
 void	ft_get_z_2(t_map *data, t_point *points, int *x, int *y);
 	/* --- isometry --- */
