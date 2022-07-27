@@ -6,11 +6,16 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 16:31:09 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:51:34 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+/*void	ft_keyhook(int keycode, t_map *data)
+{
+	
+}*/
 
 void	ft_my_mpp(t_img *img, int x, int y, int color)
 {

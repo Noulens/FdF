@@ -6,11 +6,31 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 15:48:23 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:51:10 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+static int	ft_fdf_file_checker(char *path)
+{
+	int	i;
+	int	fd;
+
+	if (path == NULL)
+		return (0);
+	i = ft_strlen(path);
+	if (i <= 4)
+		return (0);
+	if (!ft_strnstr(path + i - 4, ".fdf", 4))
+		return (0);
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	else
+		close(fd);
+	return (1);
+}
 
 static void	ft_init(t_img **img, t_map **data, char *path, int argc)
 {
