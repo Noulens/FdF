@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 18:25:56 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:41:02 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 # define Y_SIZE 1080
 # define X_SIZE 1920
-# define XC (X_SIZE >> 1)
-# define YC (Y_SIZE >> 1)
+# define XC 960
+# define YC 540
 # define TRUE_ISO 0.523599
 # define DIMETRIC_ISO 0.463744
 # define SQRT3DIVBY2 0.866
