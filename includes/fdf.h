@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/26 16:34:37 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:44:20 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,16 @@ typedef struct s_point
 	int		y0;
 	int		z0;
 	int		z1;
-	int		shortest;
+	float	shortest;
 	int		width;
 	int		length;
 	float	longest;
 	float	n;
-	int		dx;
-	int		dy;
+	float	dx;
+	float	dy;
 	float	sx;
 	float	sy;
-	int		color1;
-	int		color2;
+	int		color;
 	int		zoom;
 	int		offsetx;
 	int		offsety;
