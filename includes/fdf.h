@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 18:41:02 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 13:58:53 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_point
 	int		offsetx;
 	int		offsety;
 	int		offsetz;
+	int		t;
+	float	a;
 }	t_point;
 
 /* This is a minimal set of ANSI/VT100 color codes */
@@ -104,26 +106,27 @@ typedef struct s_point
 
 /* Useful protos */
 	/* --- graph --- */
-void	ft_my_mpp(t_img *img, int x, int y, int color);
-int		ft_rgb(int r, int g, int b);
-int		ft_close(int key, t_map *data);
-int		ft_closebutton(void *param, t_map **data);
 void	ft_draw(t_point *points, t_img *img, t_map *data);
 int		ft_findzoom(int length, int width);
-void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
-void	ft_bresenham(t_point *points, t_img *img);
-int		ft_lin_grad(t_point *points, int *i);
 void	ft_get_z_1(t_map *data, t_point *points, int *x, int *y);
 void	ft_get_z_2(t_map *data, t_point *points, int *x, int *y);
+void	ft_bresenham(t_point *points, t_img *img);
+	/* --- color ---*/
+int		ft_lin_grad(t_point *points, int *i);
+int		ft_rgb(int r, int g, int b);
+void	ft_my_mpp(t_img *img, int x, int y, int color);
 	/* --- isometry --- */
 void	ft_isometric(t_point *points);
+float	ft_theta(int t);
+void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
 	/* --- Key events --- */
 void	ft_keyhook(int keycode, t_map *data);
+int		ft_close(int key, t_map *data);
+int		ft_closebutton(void *param, t_map **data);
 	/* --- map --- */
 void	ft_build_mtx(t_map *map, char *path);
 void	ft_build_map(t_map *map, char *path);
 int		ft_check_map(char *path, t_map *map);
-int		ft_fdf_file_checker(char *path);
 void	ft_build_color(t_map *map, char *path);
 void	ft_free_map(t_map **map);
 	/* --- matrix --- */
@@ -131,5 +134,8 @@ int		ft_get_matrix_int(t_map *map, int i, int j);
 void	ft_set_matrix_int(t_map *map, int i, int j, int val);
 int		ft_get_matrix_color(t_map *map, int i, int j);
 void	ft_set_matrix_color(t_map *map, int i, int j, int val);
-
+	/* --- bonus --- */
+void	ft_rotation_x(t_point *points);
+void	ft_rotation_y(t_point *points);
+void	ft_rotation_z(t_point *points);	
 #endif

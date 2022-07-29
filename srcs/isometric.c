@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:08:25 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 18:51:26 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 13:55:31 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
 	{
 		points->x1 = ((*tmp_x + 1) * points->zoom);
 		points->y1 = points->y0;
+		ft_rotation_z(points);
 		ft_isometric(points);
+
 	}
 	else
 	{
 		points->y1 = ((*tmp_y + 1) * points->zoom);
 		points->x1 = points->x0;
+		ft_rotation_z(points);
 		ft_isometric(points);
 	}
 }
@@ -60,16 +63,20 @@ void	ft_isometric(t_point *points)
 	py = points->y0;
 	px1 = points->x1;
 	py1 = points->y1;
-	points->x0 = (px - py) * cos(TRUE_ISO)- (((points->width / 2
-					- points->length / 2) * points->zoom) * cos(TRUE_ISO)) + XC
+	points->x0 = (px - py) * cos(ft_theta(points->t)) - (((points->width / 2
+					- points->length / 2) * points->zoom)
+			* cos(ft_theta(points->t))) + XC
 		+ points->offsetx;
-	points->y0 = (px + py) * sin(TRUE_ISO) - points->z0
+	points->y0 = (px + py) * sin(ft_theta(points->t)) - points->z0
 		- ((points->zoom * (points->width + points->length + 1))
-			* sin(TRUE_ISO) - points->zoom) + Y_SIZE + points->offsety;
-	points->x1 = (px1 - py1) * cos(TRUE_ISO) - (((points->width / 2
-					- points->length / 2) * points->zoom) * cos(TRUE_ISO)) + XC
+			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE
+		+ points->offsety;
+	points->x1 = (px1 - py1) * cos(ft_theta(points->t)) - (((points->width / 2
+					- points->length / 2) * points->zoom)
+			* cos(ft_theta(points->t))) + XC
 		+ points->offsetx;
-	points->y1 = (px1 + py1) * sin(TRUE_ISO) - points->z1
+	points->y1 = (px1 + py1) * sin(ft_theta(points->t)) - points->z1
 		- ((points->zoom * (points->width + points->length + 1))
-			* sin(TRUE_ISO) - points->zoom) + Y_SIZE + points->offsety;
+			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE
+		+ points->offsety;
 }

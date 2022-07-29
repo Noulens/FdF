@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 18:51:10 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 13:59:34 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,14 @@ static void	ft_init(t_img **img, t_map **data, char *path, int argc)
 	}
 }
 
+float	ft_theta(int t)
+{
+	if (!(t % 2))
+		return (TRUE_ISO);
+	else
+		return (DIMETRIC_ISO);
+}
+
 //mlx_key_hook(data->win, ft_keyhook, &data);
 
 void	ft_offset(t_point *points)
@@ -85,12 +93,16 @@ int	main(int argc, char **argv)
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
 			&img->endian);
 	points.zoom = ft_findzoom(data->length, data->width);
+	points.t = 0;
+	points.a = 0;
 	ft_offset(&points);
 	ft_draw(&points, img, data);
 	mlx_put_image_to_window(data->mlx, data->win, img->img, 0, 0);
 	mlx_hook(data->win, 2, 1L << 0, ft_close, &data->win);
 	mlx_hook(data->win, 17, 1L << 17, ft_closebutton, &data->win);
 	mlx_loop(data->mlx);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
 	ft_free_map(&data);
 	return (0);
 }
