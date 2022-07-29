@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:08:25 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 14:55:45 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:57:49 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	ft_findzoom(int length, int width)
 
 void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
 {
-	points->x0 = *tmp_x * points->zoom;
-	points->y0 = *tmp_y * points->zoom;
+	points->x0 = *tmp_x * points->zoom + points->offsetx;
+	points->y0 = *tmp_y * points->zoom + points->offsety;
 	if (decide == 1)
 	{
-		points->x1 = ((*tmp_x + 1) * points->zoom);
+		points->x1 = ((*tmp_x + 1) * points->zoom) + points->offsetx;
 		points->y1 = points->y0;
 		ft_rotation_x(points);
 		ft_rotation_y(points);
@@ -46,7 +46,7 @@ void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
 	}
 	else
 	{
-		points->y1 = ((*tmp_y + 1) * points->zoom);
+		points->y1 = ((*tmp_y + 1) * points->zoom) + points->offsety;
 		points->x1 = points->x0;
 		ft_rotation_x(points);
 		ft_rotation_y(points);
@@ -68,14 +68,14 @@ void	ft_isometric(t_point *points)
 	py1 = points->y1;
 	points->x0 = (px - py) * cos(ft_theta(points->t)) - (((points->width / 2
 					- points->length / 2) * points->zoom)
-			* cos(ft_theta(points->t))) + XC + points->offsetx;
+			* cos(ft_theta(points->t))) + XC;
 	points->y0 = (px + py) * sin(ft_theta(points->t)) - points->z0
 		- ((points->zoom * (points->width + points->length + 1))
-			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE + points->offsety;
+			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE;
 	points->x1 = (px1 - py1) * cos(ft_theta(points->t)) - (((points->width / 2
 					- points->length / 2) * points->zoom)
-			* cos(ft_theta(points->t))) + XC + points->offsetx;
+			* cos(ft_theta(points->t))) + XC;
 	points->y1 = (px1 + py1) * sin(ft_theta(points->t)) - points->z1
 		- ((points->zoom * (points->width + points->length + 1))
-			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE + points->offsety;
+			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE;
 }
