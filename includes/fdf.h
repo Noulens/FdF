@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 14:12:15 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 18:01:22 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef struct s_point
 	float	a0;
 	float	a1;
 	float	a2;
+	t_img	*img;
+	t_map	*data;
 }	t_point;
 
 /* This is a minimal set of ANSI/VT100 color codes */
@@ -122,7 +124,6 @@ void	ft_isometric(t_point *points);
 float	ft_theta(int t);
 void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
 	/* --- Key events --- */
-void	ft_keyhook(int keycode, t_map *data);
 int		ft_close(int key, t_map *data);
 int		ft_closebutton(void *param, t_map **data);
 	/* --- map --- */

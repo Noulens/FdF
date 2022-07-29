@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 14:54:11 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 18:25:26 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	ft_offset(t_point *points)
 	points->offsety = 0;
 	points->offsetz = 0;
 }
-/*
-int	ft_key(int key, t_point *points, t_img *img, t_map *data)
+
+int	ft_key(int key, t_point *points)
 {
 	if (key == UP)
 		points->offsety += 10;
@@ -85,10 +85,10 @@ int	ft_key(int key, t_point *points, t_img *img, t_map *data)
 		points->offsetx -= 10;
 	if (key == RIGHT)
 		points->offsetx += 10;
-	ft_draw(points, img, data);
+	ft_draw(points, points->img, points->data);
 	return (0);
 }
-*/
+
 int	main(int argc, char **argv)
 {
 	t_img	*img;
@@ -104,15 +104,17 @@ int	main(int argc, char **argv)
 	img->img = mlx_new_image(data->mlx, X_SIZE, Y_SIZE);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
 			&img->endian);
+	//points = (t_point *)malloc(sizeof(t_point));
 	points.zoom = ft_findzoom(data->length, data->width);
 	points.t = 0;
 	points.a0 = 0;
 	points.a1 = 0;
 	points.a2 = 0;
+	points.img = img;
+	points.data = data;
 	ft_offset(&points);
-	ft_draw(&points, img, data);
-	//mlx_key_hook(data->win, ft_key, data);
-	//mlx_hook(data->win, 2, 1L << 0, ft_close, data->win);
+	ft_draw(&points, points.img, points.data);
+	mlx_key_hook(data->win, ft_key, &points);
 	mlx_hook(data->win, 17, 1L << 17, ft_closebutton, data->win);
 	mlx_loop(data->mlx);
 	return (0);
