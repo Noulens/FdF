@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:50:58 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 18:25:57 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 00:38:47 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,5 @@ void	ft_draw(t_point *points, t_img *img, t_map *data)
 				ft_bresenham(points, img);
 		}
 	}
-	mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, img->img, 0, 0);
 }

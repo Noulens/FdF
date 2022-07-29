@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 23:43:17 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 00:30:42 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	ft_rgb(int r, int g, int b)
 
 int	ft_closebutton(t_point *param)
 {
+	mlx_destroy_image(param->data->mlx, param->img->img);
 	mlx_destroy_display(param->data->mlx);
 	mlx_destroy_window(param->data->mlx, param->data->win);
 	ft_free_map(&param->data);
