@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 13:58:53 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:12:15 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ typedef struct s_point
 	int		offsety;
 	int		offsetz;
 	int		t;
-	float	a;
+	float	a0;
+	float	a1;
+	float	a2;
 }	t_point;
 
 /* This is a minimal set of ANSI/VT100 color codes */
