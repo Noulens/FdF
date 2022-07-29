@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 12:50:55 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:36:58 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	ft_close(int keycode, t_map *data)
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(data->mlx, data->win);
+		mlx_destroy_display(data->mlx);
 	}
 	return (0);
 }

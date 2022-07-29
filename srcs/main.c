@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 14:19:34 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:54:11 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,27 @@ float	ft_theta(int t)
 		return (DIMETRIC_ISO);
 }
 
-//mlx_key_hook(data->win, ft_keyhook, &data);
-
 void	ft_offset(t_point *points)
 {
 	points->offsetx = 0;
 	points->offsety = 0;
 	points->offsetz = 0;
 }
-
+/*
+int	ft_key(int key, t_point *points, t_img *img, t_map *data)
+{
+	if (key == UP)
+		points->offsety += 10;
+	if (key == DOWN)
+		points->offsety -= 10;
+	if (key == LEFT)
+		points->offsetx -= 10;
+	if (key == RIGHT)
+		points->offsetx += 10;
+	ft_draw(points, img, data);
+	return (0);
+}
+*/
 int	main(int argc, char **argv)
 {
 	t_img	*img;
@@ -99,12 +111,15 @@ int	main(int argc, char **argv)
 	points.a2 = 0;
 	ft_offset(&points);
 	ft_draw(&points, img, data);
-	mlx_put_image_to_window(data->mlx, data->win, img->img, 0, 0);
-	mlx_hook(data->win, 2, 1L << 0, ft_close, &data->win);
-	mlx_hook(data->win, 17, 1L << 17, ft_closebutton, &data->win);
+	//mlx_key_hook(data->win, ft_key, data);
+	//mlx_hook(data->win, 2, 1L << 0, ft_close, data->win);
+	mlx_hook(data->win, 17, 1L << 17, ft_closebutton, data->win);
 	mlx_loop(data->mlx);
+	return (0);
+}
+
+/*
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	ft_free_map(&data);
-	return (0);
-}
+*/

@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:08:25 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 14:07:32 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:55:45 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,14 @@ void	ft_isometric(t_point *points)
 	py1 = points->y1;
 	points->x0 = (px - py) * cos(ft_theta(points->t)) - (((points->width / 2
 					- points->length / 2) * points->zoom)
-			* cos(ft_theta(points->t))) + XC
-		+ points->offsetx;
+			* cos(ft_theta(points->t))) + XC + points->offsetx;
 	points->y0 = (px + py) * sin(ft_theta(points->t)) - points->z0
 		- ((points->zoom * (points->width + points->length + 1))
-			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE
-		+ points->offsety;
+			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE + points->offsety;
 	points->x1 = (px1 - py1) * cos(ft_theta(points->t)) - (((points->width / 2
 					- points->length / 2) * points->zoom)
-			* cos(ft_theta(points->t))) + XC
-		+ points->offsetx;
+			* cos(ft_theta(points->t))) + XC + points->offsetx;
 	points->y1 = (px1 + py1) * sin(ft_theta(points->t)) - points->z1
 		- ((points->zoom * (points->width + points->length + 1))
-			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE
-		+ points->offsety;
+			* sin(ft_theta(points->t)) - points->zoom) + Y_SIZE + points->offsety;
 }
