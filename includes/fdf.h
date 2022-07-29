@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 23:43:39 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/29 23:55:47 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,6 @@ void	ft_set_matrix_color(t_map *map, int i, int j, int val);
 	/* --- bonus --- */
 void	ft_rotation_x(t_point *points);
 void	ft_rotation_y(t_point *points);
-void	ft_rotation_z(t_point *points);	
+void	ft_rotation_z(t_point *points);
+
 #endif
