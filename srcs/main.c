@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 18:07:16 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 19:16:35 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,11 @@ int	main(int argc, char **argv)
 	t_point	points;
 
 	ft_init(&img, &data, argv[1], argc);
-	ft_build_mtx(data, argv[1]); //!\\-----> Regler pbm sur le free de data et img en cas d'echec du malloc de la mtx
+	ft_build_mtx(data, argv[1]); //change to return == 0 //!\\-----> Regler pbm sur le free de data et img en cas d'echec du malloc de la mtx
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		exit(EXIT_FAILURE); //!\\-----> a gerer
-	data->win = mlx_new_window(data->mlx, X_SIZE, Y_SIZE, "Hell world");
+		exit(EXIT_FAILURE); //free img et free mtx //!\\-----> a gerer
+	data->win = mlx_new_window(data->mlx, X_SIZE, Y_SIZE, "FDF - TNO");
 	img->img = mlx_new_image(data->mlx, X_SIZE, Y_SIZE);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
 			&img->endian);
