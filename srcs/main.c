@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 11:46:04 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 13:50:51 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,12 @@ int	ft_key(int key, t_point *points)
 	ft_adjust_rotation(key, points);
 	ft_adjust_zoom(key, points);
 	ft_adjust_projection(key, points);
+	ft_reset_view(key, points);
+	mlx_destroy_image(points->data->mlx, points->img->img);
+	points->img->img = mlx_new_image(points->data->mlx, X_SIZE, Y_SIZE);
+	points->img->addr = mlx_get_data_addr(points->img->img,
+		&points->img->bpp, &points->img->line_length,
+			&points->img->endian);
 	ft_draw(points, points->img, points->data);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linear_gradient.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:45:27 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/27 18:25:48 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/30 13:51:56 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,3 @@ int	ft_lin_grad(t_point *points, int *i)
 	else
 		return (points->color);
 }
-
-/*
-	if (points->z0 == 0 && points->z1 == 0 && points->color == 0)
-		points->color = 0xffffff;
-	else if (points->z0 && points->z1 && points->z0 == points->z1
-		&& points->color == 0)
-		points->color = 0xcc0000;
-	else if (points->z0 < points->z1
-		&& points->color == 0)
-		points->color = ft_gradient();
-	else if (points->z0 > points->z1
-		&& points->color == 0)
-		points->color = ft_gradient();
-*/

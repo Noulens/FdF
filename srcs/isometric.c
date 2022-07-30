@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:08:25 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 11:48:17 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 13:44:52 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_adjust_zoom(int key, t_point *points)
 
 void	ft_adjust_projection(int key, t_point *points)
 {
-	if (key == TBD)
+	if (key == 112)
 		points->t += 1;
 }
 
@@ -56,18 +56,18 @@ void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)
 	{
 		points->x1 = ((*tmp_x + 1) * points->zoom) + points->offsetx;
 		points->y1 = points->y0;
+		ft_rotation_z(points);
 		ft_rotation_x(points);
 		ft_rotation_y(points);
-		ft_rotation_z(points);
 		ft_isometric(points);
 	}
 	else
 	{
 		points->y1 = ((*tmp_y + 1) * points->zoom) + points->offsety;
 		points->x1 = points->x0;
+		ft_rotation_z(points);
 		ft_rotation_x(points);
 		ft_rotation_y(points);
-		ft_rotation_z(points);
 		ft_isometric(points);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 13:00:06 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 11:23:11 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 13:54:51 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	ft_rotation_z(t_point *points)
 	dx = points->x0;
 	dy = points->y0;
 	points->x0 = dx * cos(points->a2) - dy * sin(points->a2);
-	points->y0 = -dx * sin(points->a2) + dy * cos(points->a2);
+	points->y0 = dx * sin(points->a2) + dy * cos(points->a2);
 	dx = points->x1;
 	dy = points->y1;
 	points->x1 = dx * cos(points->a2) - dy * sin(points->a2);
-	points->y1 = -dx * sin(points->a2) + dy * cos(points->a2);
+	points->y1 = dx * sin(points->a2) + dy * cos(points->a2);
 }
 
 void    ft_adjust_rotation(int key, t_point *points)
@@ -71,4 +71,17 @@ void    ft_adjust_rotation(int key, t_point *points)
 		points->a2 += 0.09;
 	if (key == MINUS)
 		points->a2 -= 0.09;
+}
+
+void	ft_reset_view(int key, t_point *points)
+{
+	if (key == 114)
+	{
+		points->a0 = 0;
+		points->a1 = 0;
+		points->a2 = 0;
+		points->offsetx = 0;
+		points->offsety = 0;
+		points->offsetz = 0;
+	}
 }

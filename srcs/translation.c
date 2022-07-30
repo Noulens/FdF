@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 10:41:41 by waxxy             #+#    #+#             */
-/*   Updated: 2022/07/30 11:40:06 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 14:24:33 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	ft_adjust_offset(int key, t_point *points)
 {
+	if (key == 117)
+		points->offsetz -= 1;
+	if (key == 105)
+		points->offsetz += 1;
 	if (key == UP)
 	{
 		points->offsety -= 10;

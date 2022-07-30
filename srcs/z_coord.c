@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 19:48:12 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 17:44:36 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 14:27:41 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ static void	ft_get_colored(t_point *points)
 void	ft_get_z_1(t_map *data, t_point *points, int *x, int *y)
 {
 	points->color = ft_get_matrix_color(data, *y, *x);
-	points->z0 = ft_get_matrix_int(data, *y, *x) * (points->zoom >> 1)
-		+ points->offsetz;
+	points->z0 = ft_get_matrix_int(data, *y, *x) * (points->zoom >> 1);
+	if (points->z0 != 0)
+		points->z0 = points->z0 + points->z0 * points->offsetz;
 	if (*x < data->width - 1)
-		points->z1 = ft_get_matrix_int(data, *y, *x + 1) * (points->zoom >> 1)
-			+ points->offsetz;
+		points->z1 = ft_get_matrix_int(data, *y, *x + 1) * (points->zoom >> 1);
+	if (points->z1 != 0)
+		points->z1 = points->z1 + points->z1 * points->offsetz;
 	if (!points->color)
 		ft_get_colored(points);
 	else if (*x < data->width - 1)
@@ -54,11 +56,13 @@ void	ft_get_z_1(t_map *data, t_point *points, int *x, int *y)
 void	ft_get_z_2(t_map *data, t_point *points, int *x, int *y)
 {
 	points->color = ft_get_matrix_color(data, *y, *x);
-	points->z0 = ft_get_matrix_int(data, *y, *x) * (points->zoom >> 1)
-		+ points->offsetz;
+	points->z0 = ft_get_matrix_int(data, *y, *x) * (points->zoom >> 1);
+	if (points->z0 != 0)
+		points->z0 = points->z0 + points->z0 * points->offsetz;
 	if (*y < data->length - 1)
-		points->z1 = ft_get_matrix_int(data, *y + 1, *x) * (points->zoom >> 1)
-			+ points->offsetz;
+		points->z1 = ft_get_matrix_int(data, *y + 1, *x) * (points->zoom >> 1);
+	if (points->z1 != 0)
+		points->z1 = points->z1 + points->z1 * points->offsetz;
 	if (!points->color)
 		ft_get_colored(points);
 	else if (*y < data->length - 1)
