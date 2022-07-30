@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 18:05:57 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 18:07:16 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,5 @@ int	main(int argc, char **argv)
 	mlx_key_hook(data->win, ft_key, &points);
 	mlx_hook(data->win, 17, 1L << 17, ft_closebutton, &points);
 	mlx_loop(data->mlx);
-	free(data);
-	free(img);
 	return (0);
 }
