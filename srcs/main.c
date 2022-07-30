@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 00:39:08 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 11:46:04 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,10 @@ void	ft_offset(t_point *points)
 
 int	ft_key(int key, t_point *points)
 {
-	if (key == UP)
-		points->offsety += 10;
-	if (key == DOWN)
-		points->offsety -= 10;
-	if (key == LEFT)
-		points->offsetx -= 10;
-	if (key == RIGHT)
-		points->offsetx += 10;
+	ft_adjust_offset(key, points);
+	ft_adjust_rotation(key, points);
+	ft_adjust_zoom(key, points);
+	ft_adjust_projection(key, points);
 	ft_draw(points, points->img, points->data);
 	return (0);
 }
@@ -113,7 +109,6 @@ int	main(int argc, char **argv)
 	points.img = img;
 	points.data = data;
 	ft_offset(&points);
-	printf("%d\n", mlx_clear_window(points.data->mlx, points.data->win));
 	ft_draw(&points, img, data);
 	mlx_key_hook(data->win, ft_key, &points);
 	mlx_hook(data->win, 17, 1L << 17, ft_closebutton, &points);

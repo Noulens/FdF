@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   isometric.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:08:25 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/29 14:57:49 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/30 11:48:17 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,23 @@ int	ft_findzoom(int length, int width)
 		return (zoommin);
 	else
 		return (60);
+}
+
+void	ft_adjust_zoom(int key, t_point *points)
+{
+	if (key == INCREASE)
+		points->zoom += 1;
+	if (key == DECREASE)
+	{
+		if (points->zoom != 1)
+			points->zoom -= 1;
+	}
+}
+
+void	ft_adjust_projection(int key, t_point *points)
+{
+	if (key == TBD)
+		points->t += 1;
 }
 
 void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide)

@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 00:24:16 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 11:47:31 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,10 @@ void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
 	/* --- Key events --- */
 int		ft_close(int key, t_point *points);
 int		ft_closebutton(t_point *param);
+void	ft_adjust_offset(int key, t_point *points);
+void	ft_adjust_rotation(int key, t_point *points);
+void	ft_adjust_zoom(int key, t_point *points);
+void	ft_adjust_projection(int key, t_point *points);
 	/* --- map --- */
 void	ft_build_mtx(t_map *map, char *path);
 void	ft_build_map(t_map *map, char *path);
