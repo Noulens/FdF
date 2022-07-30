@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 14:26:22 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 14:50:01 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ void	ft_isometric(t_point *points);
 float	ft_theta(int t);
 void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
 	/* --- Key events --- */
-int		ft_close(int key, t_point *points);
 int		ft_closebutton(t_point *param);
 void	ft_adjust_offset(int key, t_point *points);
 void	ft_adjust_rotation(int key, t_point *points);

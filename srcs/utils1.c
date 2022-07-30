@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 12:51:59 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 14:49:46 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,6 @@ int	ft_closebutton(t_point *param)
 	ft_free_map(&param->data);
 	//free(param->img->addr);
 	//free(param->img->img);
-	return (0);
-}
-
-int	ft_close(int keycode, t_point *points)
-{
-	if (keycode == ESC)
-	{
-		mlx_destroy_window(points->data->mlx, points->data->win);
-		mlx_destroy_display(points->data->mlx);
-	}
 	return (0);
 }
 
