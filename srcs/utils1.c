@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 14:49:46 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 18:04:09 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,15 @@ int	ft_rgb(int r, int g, int b)
 int	ft_closebutton(t_point *param)
 {
 	mlx_destroy_image(param->data->mlx, param->img->img);
-	//mlx_destroy_display(param->data->mlx);
+	mlx_destroy_display(param->data->mlx);
 	mlx_destroy_window(param->data->mlx, param->data->win);
 	ft_free_map(&param->data);
-	//free(param->img->addr);
-	//free(param->img->img);
+	free(param->img->addr);
+	free(param->img->img);
+	free(param->data->mlx);
+	free(param->data);
+	free(param->img);
+	exit(EXIT_FAILURE);
 	return (0);
 }
 

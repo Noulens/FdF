@@ -6,7 +6,7 @@
 /*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 13:50:51 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/30 18:05:57 by waxxy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ int	main(int argc, char **argv)
 	img->img = mlx_new_image(data->mlx, X_SIZE, Y_SIZE);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
 			&img->endian);
-	//points = (t_point *)malloc(sizeof(t_point));
 	points.zoom = ft_findzoom(data->length, data->width);
 	points.t = 0;
 	points.a0 = 0;
