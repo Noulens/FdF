@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/31 12:26:03 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/31 13:28:20 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ float	ft_theta(int t);
 void	ft_zoom(t_point *points, int *tmp_x, int *tmp_y, int decide);
 	/* --- Key events --- */
 int		ft_closebutton(t_point *param);
+int		ft_escape(int key, t_point *param);
 void	ft_adjust_offset(int key, t_point *points);
 void	ft_adjust_rotation(int key, t_point *points);
 void	ft_adjust_zoom(int key, t_point *points);

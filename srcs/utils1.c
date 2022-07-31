@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:23:49 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/31 12:23:58 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/31 13:28:01 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,28 @@ int	ft_rgb(int r, int g, int b)
 	return (r << 16 | g << 8 | b);
 }
 
+int	ft_escape(int key, t_point *param)
+{
+	if (key == 65307)
+	{
+		mlx_destroy_image(param->data->mlx, param->img->img);
+		mlx_destroy_window(param->data->mlx, param->data->win);
+		mlx_destroy_display(param->data->mlx);
+		ft_free_map(&param->data);
+		free(param->img);
+		exit(EXIT_SUCCESS);
+	}
+	return (0);
+}
+
 int	ft_closebutton(t_point *param)
 {
 	mlx_destroy_image(param->data->mlx, param->img->img);
-	mlx_destroy_display(param->data->mlx);
 	mlx_destroy_window(param->data->mlx, param->data->win);
+	mlx_destroy_display(param->data->mlx);
 	ft_free_map(&param->data);
-	free(param->img->addr);
-	free(param->img->img);
-	free(param->data->mlx);
-	free(param->data);
 	free(param->img);
-	exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 	return (0);
 }
 
@@ -45,5 +55,7 @@ void	ft_free_map(t_map **map)
 	free((*map)->matrix[0]);
 	free((*map)->matrix[1]);
 	free((*map)->matrix);
+	if ((*map)->mlx)
+		free((*map)->mlx);
 	free((*map));
 }
