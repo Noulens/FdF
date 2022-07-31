@@ -15,20 +15,19 @@ This is my version of fdf project for school 42. It includes:
 ---
 I used the following documentation:
 
-- Rotation:
+- Isometric projection:
 
-    - [Linear algebra](http://www.gandraxa.com/isometric_projection.xml "Linear algebra")
+    - [Isometric projection](http://www.gandraxa.com/isometric_projection.xml "Isometric projection")
 
 - Linear gradient:
 
     - [How to rasterize a triangle](https://www.youtube.com/watch?v=t7Ztio8cwqM "Rasterize a triangle")
 
-- Isometric projection:
+- Rotation:
 
     - [Linear algebra](http://grafika.me/node/82 "Linear algebra")
 
  --- 
-
 
 <!-- Images -->
 
