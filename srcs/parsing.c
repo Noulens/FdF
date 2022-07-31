@@ -6,7 +6,7 @@
 /*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:24:19 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/26 16:31:36 by tnoulens         ###   ########.fr       */
+/*   Updated: 2022/07/31 12:39:14 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,17 +120,17 @@ void	ft_build_color(t_map *map, char *path)
 	close(fd);
 }
 
-void	ft_build_mtx(t_map *map, char *path)
+int	ft_build_mtx(t_map *map, char *path)
 {
 	map->matrix = (int **)malloc(3 * sizeof(int *));
 	if (!map->matrix)
-		ft_printf("malloc error: ft_build_mtx");
+		return (ft_printf("malloc error: ft_build_mtx\n"), 0);
 	map->matrix[0] = (int *)ft_calloc(map->length * map->width, sizeof(int));
 	if (!map->matrix[0])
 	{
 		free(map->matrix[0]);
 		free(map->matrix);
-		ft_printf("malloc error: ft_build_mtx");
+		ft_printf("malloc error: ft_build_mtx\n");
 		exit(EXIT_FAILURE);
 	}
 	map->matrix[1] = (int *)ft_calloc(map->length * map->width, sizeof(int));
@@ -138,10 +138,11 @@ void	ft_build_mtx(t_map *map, char *path)
 	{
 		free(map->matrix[1]);
 		free(map->matrix);
-		ft_printf("malloc error: ft_build_mtx");
+		ft_printf("malloc error: ft_build_mtx\n");
 		exit(EXIT_FAILURE);
 	}
 	map->matrix[2] = NULL;
 	ft_build_map(map, path);
 	ft_build_color(map, path);
+	return (1);
 }

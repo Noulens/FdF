@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:35:20 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 19:16:35 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/31 12:39:50 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,22 @@ static void	ft_init(t_img **img, t_map **data, char *path, int argc)
 	*data = (t_map *)malloc(sizeof(t_map));
 	if (!*data)
 	{
-		ft_printf(RED"malloc issue: ft_init"END);
+		ft_printf(RED"malloc issue: ft_init\n"END);
 		exit(EXIT_FAILURE);
 	}
 	if (!ft_check_map(path, *data))
 	{
 		free(*data);
-		ft_printf(RED"incorrect map size"END);
+		ft_printf(RED"incorrect map size\n"END);
 		exit(EXIT_FAILURE);
 	}
 	*img = (t_img *)malloc(sizeof(t_img));
 	if (!*img)
 	{
 		free(*data);
-		ft_printf(RED"malloc issue: ft_init"END);
+		ft_printf(RED"malloc issue: ft_init\n"END);
 		exit(EXIT_FAILURE);
 	}
-}
-
-float	ft_theta(int t)
-{
-	if (!(t % 2))
-		return (TRUE_ISO);
-	else
-		return (DIMETRIC_ISO);
 }
 
 void	ft_offset(t_point *points)
@@ -73,6 +65,10 @@ void	ft_offset(t_point *points)
 	points->offsetx = 0;
 	points->offsety = 0;
 	points->offsetz = 0;
+	points->t = 0;
+	points->a0 = 0;
+	points->a1 = 0;
+	points->a2 = 0;
 }
 
 int	ft_key(int key, t_point *points)
@@ -85,7 +81,7 @@ int	ft_key(int key, t_point *points)
 	mlx_destroy_image(points->data->mlx, points->img->img);
 	points->img->img = mlx_new_image(points->data->mlx, X_SIZE, Y_SIZE);
 	points->img->addr = mlx_get_data_addr(points->img->img,
-		&points->img->bpp, &points->img->line_length,
+			&points->img->bpp, &points->img->line_length,
 			&points->img->endian);
 	ft_draw(points, points->img, points->data);
 	return (0);
@@ -98,19 +94,16 @@ int	main(int argc, char **argv)
 	t_point	points;
 
 	ft_init(&img, &data, argv[1], argc);
-	ft_build_mtx(data, argv[1]); //change to return == 0 //!\\-----> Regler pbm sur le free de data et img en cas d'echec du malloc de la mtx
+	if (!ft_build_mtx(data, argv[1]))
+		return (free(data), free(img), 1);
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		exit(EXIT_FAILURE); //free img et free mtx //!\\-----> a gerer
+		return (ft_printf("env -i used\n"), ft_free_map(&data), free(img), 0);
 	data->win = mlx_new_window(data->mlx, X_SIZE, Y_SIZE, "FDF - TNO");
 	img->img = mlx_new_image(data->mlx, X_SIZE, Y_SIZE);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
 			&img->endian);
 	points.zoom = ft_findzoom(data->length, data->width);
-	points.t = 0;
-	points.a0 = 0;
-	points.a1 = 0;
-	points.a2 = 0;
 	points.img = img;
 	points.data = data;
 	ft_offset(&points);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   translation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 10:41:41 by waxxy             #+#    #+#             */
-/*   Updated: 2022/07/30 14:24:33 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/31 12:35:47 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ void	ft_adjust_offset(int key, t_point *points)
 		points->offsety += 10;
 		points->offsetx += 10;
 	}
+}
+
+float	ft_theta(int t)
+{
+	if (!(t % 2))
+		return (TRUE_ISO);
+	else
+		return (DIMETRIC_ISO);
 }

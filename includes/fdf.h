@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waxxy <waxxy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tnoulens <tnoulens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:40:17 by tnoulens          #+#    #+#             */
-/*   Updated: 2022/07/30 14:50:01 by waxxy            ###   ########.fr       */
+/*   Updated: 2022/07/31 12:26:03 by tnoulens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	ft_adjust_zoom(int key, t_point *points);
 void	ft_adjust_projection(int key, t_point *points);
 void	ft_reset_view(int key, t_point *points);
 	/* --- map --- */
-void	ft_build_mtx(t_map *map, char *path);
+int		ft_build_mtx(t_map *map, char *path);
 void	ft_build_map(t_map *map, char *path);
 int		ft_check_map(char *path, t_map *map);
 void	ft_build_color(t_map *map, char *path);
