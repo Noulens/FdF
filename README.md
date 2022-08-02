@@ -30,5 +30,10 @@ I used the following documentation:
  --- 
 
 <!-- Images -->
+42 image:
 
 ![42.fdf](https://github.com/Noulens/FdF/blob/master/image/42.png)
+
+---
+Close up of Julia's fractal:
+![Julia-set.fdf](https://github.com/Noulens/FdF/blob/master/image/Julia-set.png)
